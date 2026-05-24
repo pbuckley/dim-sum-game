@@ -117,161 +117,31 @@ select { font-size: 13px; padding: 7px 10px; border-radius: 8px; border: 0.5px s
 </div>
 
 <script>
-const ROUNDS = [
-  {
-    cat:"bible",
-    clues:[
-      {l:"A",text:"Days of Creation (before God rested)",n:6},
-      {l:"B",text:"Number of Commandments",n:10},
-      {l:"C",text:"Persons in the Trinity",n:3},
-      {l:"D",text:"Books in the New Testament",n:27}
-    ],
-    answer:16, op:"+", correct:["A","B"]
-  },
-  {
-    cat:"bible",
-    clues:[
-      {l:"A",text:"Sons of Jacob (tribes of Israel)",n:12},
-      {l:"B",text:"Disciples of Jesus",n:12},
-      {l:"C",text:"Books of Moses (the Pentateuch)",n:5},
-      {l:"D",text:"Years Israel wandered the wilderness",n:40}
-    ],
-    answer:60, op:"×", correct:["A","C"]
-  },
-  {
-    cat:"general",
-    clues:[
-      {l:"A",text:"Sides on a stop sign",n:8},
-      {l:"B",text:"Players on a basketball team (on court)",n:5},
-      {l:"C",text:"Holes on a standard golf course",n:18},
-      {l:"D",text:"Days in a leap year",n:366}
-    ],
-    answer:40, op:"×", correct:["A","B"]
-  },
-  {
-    cat:"bible",
-    clues:[
-      {l:"A",text:"Silver pieces Judas received",n:30},
-      {l:"B",text:"Days Moses was on Mount Sinai",n:40},
-      {l:"C",text:"Books in the Old Testament",n:39},
-      {l:"D",text:"Age Jesus began his public ministry",n:30}
-    ],
-    answer:60, op:"+", correct:["A","D"]
-  },
-  {
-    cat:"general",
-    clues:[
-      {l:"A",text:"Rings in the Olympic logo",n:5},
-      {l:"B",text:"Stripes on the American flag",n:13},
-      {l:"C",text:"Letters in the English alphabet",n:26},
-      {l:"D",text:"Keys on a standard piano",n:88}
-    ],
-    answer:18, op:"+", correct:["A","B"]
-  },
-  {
-    cat:"bible",
-    clues:[
-      {l:"A",text:"Men in the fiery furnace (+ the mystery figure)",n:4},
-      {l:"B",text:"Plagues of Egypt",n:10},
-      {l:"C",text:"Chapters in Psalms",n:150},
-      {l:"D",text:"Letters Paul wrote (epistles)",n:13}
-    ],
-    answer:40, op:"+", correct:["B","D"]
-  },
-  {
-    cat:"general",
-    clues:[
-      {l:"A",text:"Teeth in an adult human mouth",n:32},
-      {l:"B",text:"Days in February (non-leap year)",n:28},
-      {l:"C",text:"Players on a soccer team (on field)",n:11},
-      {l:"D",text:"Planets in our solar system",n:8}
-    ],
-    answer:4, op:"−", correct:["D","C"]
-  },
-  {
-    cat:"bible",
-    clues:[
-      {l:"A",text:"Beatitudes in the Sermon on the Mount",n:8},
-      {l:"B",text:"Days Jesus was in the tomb",n:3},
-      {l:"C",text:"Wives of King Solomon",n:700},
-      {l:"D",text:"Books of John in the New Testament",n:4}
-    ],
-    answer:5, op:"−", correct:["A","B"]
-  },
-  {
-    cat:"general",
-    clues:[
-      {l:"A",text:"Planets in our solar system",n:8},
-      {l:"B",text:"Innings in a baseball game",n:9},
-      {l:"C",text:"Continents on Earth",n:7},
-      {l:"D",text:"Wonders of the Ancient World",n:7}
-    ],
-    answer:17, op:"+", correct:["A","B"]
-  },
-  {
-    cat:"bible",
-    clues:[
-      {l:"A",text:"Loaves of bread used to feed the 5000",n:5},
-      {l:"B",text:"Fish used to feed the 5000",n:2},
-      {l:"C",text:"Baskets of leftovers collected",n:12},
-      {l:"D",text:"Days of Noah's rain",n:40}
-    ],
-    answer:17, op:"+", correct:["A","C"]
-  },
-  {
-    cat:"bible",
-    clues:[
-      {l:"A",text:"Men Gideon defeated the Midianites with",n:300},
-      {l:"B",text:"Pieces of silver Joseph was sold for",n:20},
-      {l:"C",text:"Years Solomon's temple took to build",n:7},
-      {l:"D",text:"Days of Noah's rain",n:40}
-    ],
-    answer:60, op:"+", correct:["B","D"]
-  },
-  {
-    cat:"general",
-    clues:[
-      {l:"A",text:"Squares on a chess board",n:64},
-      {l:"B",text:"Cards in a standard deck",n:52},
-      {l:"C",text:"Hours in a day",n:24},
-      {l:"D",text:"Weeks in a year",n:52}
-    ],
-    answer:12, op:"−", correct:["A","B"]
-  },
-  {
-    cat:"bible",
-    clues:[
-      {l:"A",text:"Wings on a seraph (Isaiah 6)",n:6},
-      {l:"B",text:"Elders around the throne in Revelation",n:24},
-      {l:"C",text:"Years Solomon's temple took to build",n:7},
-      {l:"D",text:"Books in the Bible total",n:66}
-    ],
-    answer:13, op:"+", correct:["A","C"]
-  },
-  {
-    cat:"general",
-    clues:[
-      {l:"A",text:"States in the United States",n:50},
-      {l:"B",text:"Minutes in an hour",n:60},
-      {l:"C",text:"Weeks in a year",n:52},
-      {l:"D",text:"Countries in the United Kingdom",n:4}
-    ],
-    answer:102, op:"+", correct:["A","C"]
-  },
-  {
-    cat:"bible",
-    clues:[
-      {l:"A",text:"Fish in the miraculous catch (John 21)",n:153},
-      {l:"B",text:"Books in the Old Testament",n:39},
-      {l:"C",text:"Chapters in Psalms",n:150},
-      {l:"D",text:"Disciples of Jesus",n:12}
-    ],
-    answer:3, op:"−", correct:["C","D"]
-  }
-];
-
+let ROUNDS=[];
 let round=0, scores=[0,0], teamNames=["Team 1","Team 2"], currentTeam=0;
 let picked=[], answered=false;
+
+async function loadGameData(){
+  try {
+    const res=await fetch("game-data.json",{cache:"no-store"});
+    if(!res.ok)throw new Error(`HTTP ${res.status}`);
+    const data=await res.json();
+    ROUNDS=data.rounds||[];
+    if(Array.isArray(data.teams)&&data.teams.length>=2){
+      teamNames=[data.teams[0],data.teams[1]];
+      document.getElementById("tn1").textContent=teamNames[0];
+      document.getElementById("tn2").textContent=teamNames[1];
+      document.getElementById("team-sel").options[0].text=teamNames[0];
+      document.getElementById("team-sel").options[1].text=teamNames[1];
+    }
+    renderRound();
+  } catch(err){
+    document.getElementById("main-game").innerHTML=
+      `<div class="question-card"><h3 style="margin-bottom:8px">Couldn't load game-data.json</h3>`+
+      `<p style="font-size:13px;color:#5f5e5a">${err.message}. If you opened this file directly, serve it instead: `+
+      `<code>python3 -m http.server</code> from the project folder, then visit http://localhost:8000/</p></div>`;
+  }
+}
 
 function buildProgress(){
   const el=document.getElementById("progress");
@@ -404,7 +274,7 @@ document.getElementById("tn2").ondblclick=()=>{
   if(n){teamNames[1]=n;document.getElementById("tn2").textContent=n;document.getElementById("team-sel").options[1].text=n;updateTurnIndicator();}
 };
 
-renderRound();
+loadGameData();
 </script>
 </body>
 </html>
