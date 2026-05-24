@@ -25,8 +25,6 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #f5f4f0; c
 .pdot.current { background: #FAC775; border-color: #EF9F27; }
 .round-info { text-align: center; font-size: 12px; color: #5f5e5a; margin-bottom: 0.75rem; }
 .question-card { background: #fff; border: 0.5px solid rgba(0,0,0,0.15); border-radius: 12px; padding: 1.25rem; }
-.cat-tag { display: inline-block; font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 20px; margin-bottom: 1rem; background: #E1F5EE; color: #0F6E56; }
-.cat-tag.general { background: #EEEDFE; color: #3C3489; }
 .equation-box { background: #E6F1FB; border: 0.5px solid #85B7EB; border-radius: 8px; padding: 1rem 1.25rem; text-align: center; margin-bottom: 1.25rem; }
 .eq-label { font-size: 12px; color: #185FA5; margin-bottom: 4px; }
 .eq-main { font-size: 28px; font-weight: 500; color: #042C53; font-family: monospace; letter-spacing: 2px; }
@@ -86,7 +84,6 @@ select { font-size: 13px; padding: 7px 10px; border-radius: 8px; border: 0.5px s
     <div class="round-info" id="round-info"></div>
 
     <div class="question-card">
-      <div id="cat-tag" class="cat-tag">Bible</div>
       <div class="equation-box">
         <div class="eq-label">Which two clues satisfy this equation?</div>
         <div class="eq-main" id="eq-display"></div>
@@ -158,9 +155,6 @@ function renderRound(){
   picked=[]; answered=false;
   document.getElementById("round-info").textContent=`Round ${round+1} of ${ROUNDS.length}`;
   document.getElementById("feedback").className="feedback-bar";
-  const tag=document.getElementById("cat-tag");
-  tag.textContent=r.cat==="bible"?"Bible":"General Knowledge";
-  tag.className="cat-tag"+(r.cat==="general"?" general":"");
   document.getElementById("eq-display").textContent=`? ${r.op} ? = ${r.answer}`;
   const grid=document.getElementById("clues-grid");
   grid.innerHTML="";
