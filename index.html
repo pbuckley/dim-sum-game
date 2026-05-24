@@ -31,20 +31,20 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #f5f4f0; c
 .eq-label { font-size: 12px; color: #185FA5; margin-bottom: 4px; }
 .eq-main { font-size: 28px; font-weight: 500; color: #042C53; font-family: monospace; letter-spacing: 2px; }
 .clues-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 1.25rem; }
-.clue-row { display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 8px; border: 0.5px solid rgba(0,0,0,0.15); background: #f5f4f0; }
-.clue-row.correct-reveal { background: #E1F5EE; border-color: #5DCAA5; }
-.clue-row.wrong-reveal { background: #FAECE7; border-color: #F0997B; }
+.clue-row { display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 8px; border: 0.5px solid rgba(0,0,0,0.15); background: #f5f4f0; cursor: pointer; user-select: none; transition: background 0.1s, border-color 0.1s; }
+.clue-row:hover { background: #ecebe4; }
+.clue-row.selected { background: #185FA5; border-color: #185FA5; }
+.clue-row.selected .clue-letter, .clue-row.selected .clue-text { color: #fff; }
+.clue-row.selected:hover { background: #134E87; }
+.clue-row.correct-reveal { background: #E1F5EE; border-color: #5DCAA5; cursor: default; }
+.clue-row.correct-reveal .clue-letter, .clue-row.correct-reveal .clue-text { color: #1a1a18; }
+.clue-row.wrong-reveal { background: #FAECE7; border-color: #F0997B; cursor: default; }
+.clue-row.wrong-reveal .clue-letter, .clue-row.wrong-reveal .clue-text { color: #1a1a18; }
 .clue-letter { font-size: 14px; font-weight: 500; color: #5f5e5a; min-width: 18px; }
 .clue-text { font-size: 13px; color: #1a1a18; flex: 1; }
 .clue-answer { font-size: 15px; font-weight: 500; min-width: 36px; text-align: right; color: #0F6E56; display: none; }
 .clue-row.revealed .clue-answer { display: block; }
-.pick-section { margin-bottom: 1rem; }
-.pick-label { font-size: 13px; color: #5f5e5a; margin-bottom: 8px; }
-.pick-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
-.pick-btn { width: 48px; height: 48px; border-radius: 8px; border: 0.5px solid rgba(0,0,0,0.3); background: #fff; color: #1a1a18; font-size: 18px; font-weight: 500; cursor: pointer; font-family: inherit; }
-.pick-btn:hover { background: #f5f4f0; }
-.pick-btn.selected { background: #185FA5; color: white; border-color: #185FA5; }
-.controls { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.controls { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 1rem; }
 .team-select-row { display: flex; align-items: center; gap: 8px; flex: 1; }
 .answer-label { font-size: 13px; color: #5f5e5a; white-space: nowrap; }
 select { font-size: 13px; padding: 7px 10px; border-radius: 8px; border: 0.5px solid rgba(0,0,0,0.3); background: #fff; color: #1a1a18; font-family: inherit; }
@@ -65,7 +65,7 @@ select { font-size: 13px; padding: 7px 10px; border-radius: 8px; border: 0.5px s
 <div id="app">
   <div class="header">
     <div class="title">🥟 Dim Sum</div>
-    <div class="subtitle">The equation answer is shown — pick which two clues (A B C D) satisfy it</div>
+    <div class="subtitle">The equation answer is shown — click the two clues that satisfy it</div>
   </div>
 
   <div id="main-game">
@@ -92,15 +92,6 @@ select { font-size: 13px; padding: 7px 10px; border-radius: 8px; border: 0.5px s
         <div class="eq-main" id="eq-display"></div>
       </div>
       <div class="clues-grid" id="clues-grid"></div>
-      <div class="pick-section">
-        <div class="pick-label">Select the two clue letters that solve the equation:</div>
-        <div class="pick-buttons">
-          <button class="pick-btn" data-l="A" onclick="togglePick('A')">A</button>
-          <button class="pick-btn" data-l="B" onclick="togglePick('B')">B</button>
-          <button class="pick-btn" data-l="C" onclick="togglePick('C')">C</button>
-          <button class="pick-btn" data-l="D" onclick="togglePick('D')">D</button>
-        </div>
-      </div>
       <div class="controls">
         <div class="team-select-row">
           <span class="answer-label">Answering team:</span>
@@ -308,9 +299,9 @@ function renderRound(){
     row.className="clue-row";
     row.id="cr-"+c.l;
     row.innerHTML=`<span class="clue-letter">${c.l}</span><span class="clue-text">${c.text}</span><span class="clue-answer">${c.n}</span>`;
+    row.onclick=()=>togglePick(c.l);
     grid.appendChild(row);
   });
-  document.querySelectorAll(".pick-btn").forEach(b=>b.className="pick-btn");
   document.getElementById("team-sel").value=String(currentTeam);
   updateTurnIndicator();
   buildProgress();
@@ -318,14 +309,14 @@ function renderRound(){
 
 function togglePick(l){
   if(answered)return;
-  const btn=document.querySelector(`.pick-btn[data-l="${l}"]`);
+  const row=document.getElementById("cr-"+l);
   if(picked.includes(l)){
     picked=picked.filter(x=>x!==l);
-    btn.classList.remove("selected");
+    row.classList.remove("selected");
   } else {
     if(picked.length>=2)return;
     picked.push(l);
-    btn.classList.add("selected");
+    row.classList.add("selected");
   }
 }
 
