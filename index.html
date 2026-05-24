@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🥟 Dim Sum — Bible Trivia</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: system-ui, -apple-system, sans-serif; background: #f5f4f0; color: #1a1a18; min-height: 100vh; padding: 1rem; }
+#app { max-width: 900px; margin: 0 auto; }
+.header { text-align: center; margin-bottom: 1.25rem; }
+.title { font-size: 32px; font-weight: 500; color: #1a1a18; }
+.subtitle { font-size: 13px; color: #5f5e5a; margin-top: 4px; }
+.scoreboard { display: grid; grid-template-columns: 1fr auto 1fr; gap: 12px; margin-bottom: 1rem; align-items: center; }
+.team-card { background: #fff; border: 0.5px solid rgba(0,0,0,0.15); border-radius: 12px; padding: 0.75rem 1rem; text-align: center; }
+.team-card.active { border: 2px solid #1D9E75; }
+.team-name { font-size: 12px; color: #5f5e5a; margin-bottom: 2px; cursor: pointer; }
+.team-score { font-size: 36px; font-weight: 500; color: #1a1a18; }
+.vs-badge { text-align: center; font-size: 16px; color: #5f5e5a; }
+.turn-indicator { text-align: center; font-size: 13px; font-weight: 500; color: #0F6E56; margin-bottom: 0.75rem; }
+.progress { display: flex; gap: 4px; justify-content: center; margin-bottom: 0.75rem; }
+.pdot { width: 12px; height: 12px; border-radius: 50%; background: #e8e7e0; border: 0.5px solid rgba(0,0,0,0.15); }
+.pdot.done { background: #1D9E75; border-color: #1D9E75; }
+.pdot.current { background: #FAC775; border-color: #EF9F27; }
+.round-info { text-align: center; font-size: 12px; color: #5f5e5a; margin-bottom: 0.75rem; }
+.question-card { background: #fff; border: 0.5px solid rgba(0,0,0,0.15); border-radius: 12px; padding: 1.25rem; }
+.cat-tag { display: inline-block; font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 20px; margin-bottom: 1rem; background: #E1F5EE; color: #0F6E56; }
+.cat-tag.general { background: #EEEDFE; color: #3C3489; }
+.equation-box { background: #E6F1FB; border: 0.5px solid #85B7EB; border-radius: 8px; padding: 1rem 1.25rem; text-align: center; margin-bottom: 1.25rem; }
+.eq-label { font-size: 12px; color: #185FA5; margin-bottom: 4px; }
+.eq-main { font-size: 28px; font-weight: 500; color: #042C53; font-family: monospace; letter-spacing: 2px; }
+.clues-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 1.25rem; }
+.clue-row { display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 8px; border: 0.5px solid rgba(0,0,0,0.15); background: #f5f4f0; }
+.clue-row.correct-reveal { background: #E1F5EE; border-color: #5DCAA5; }
+.clue-row.wrong-reveal { background: #FAECE7; border-color: #F0997B; }
+.clue-letter { font-size: 14px; font-weight: 500; color: #5f5e5a; min-width: 18px; }
+.clue-text { font-size: 13px; color: #1a1a18; flex: 1; }
+.clue-answer { font-size: 15px; font-weight: 500; min-width: 36px; text-align: right; color: #0F6E56; display: none; }
+.clue-row.revealed .clue-answer { display: block; }
+.pick-section { margin-bottom: 1rem; }
+.pick-label { font-size: 13px; color: #5f5e5a; margin-bottom: 8px; }
+.pick-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+.pick-btn { width: 48px; height: 48px; border-radius: 8px; border: 0.5px solid rgba(0,0,0,0.3); background: #fff; color: #1a1a18; font-size: 18px; font-weight: 500; cursor: pointer; font-family: inherit; }
+.pick-btn:hover { background: #f5f4f0; }
+.pick-btn.selected { background: #185FA5; color: white; border-color: #185FA5; }
+.controls { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.team-select-row { display: flex; align-items: center; gap: 8px; flex: 1; }
+.answer-label { font-size: 13px; color: #5f5e5a; white-space: nowrap; }
+select { font-size: 13px; padding: 7px 10px; border-radius: 8px; border: 0.5px solid rgba(0,0,0,0.3); background: #fff; color: #1a1a18; font-family: inherit; }
+.btn { padding: 8px 16px; border-radius: 8px; border: 0.5px solid rgba(0,0,0,0.3); background: #fff; color: #1a1a18; font-size: 13px; cursor: pointer; font-family: inherit; }
+.btn:hover { background: #f5f4f0; }
+.btn-primary { background: #1D9E75; color: white; border-color: #1D9E75; }
+.btn-primary:hover { background: #0F6E56; }
+.feedback-bar { padding: 10px 14px; border-radius: 8px; text-align: center; font-size: 14px; font-weight: 500; margin-top: 10px; display: none; }
+.feedback-bar.correct { background: #E1F5EE; color: #0F6E56; display: block; }
+.feedback-bar.wrong { background: #FAECE7; color: #993C1D; display: block; }
+.game-over { text-align: center; padding: 3rem 2rem; display: none; background: #fff; border-radius: 12px; border: 0.5px solid rgba(0,0,0,0.15); }
+.game-over h2 { font-size: 28px; font-weight: 500; margin-bottom: 8px; }
+.final-scores { font-size: 18px; color: #5f5e5a; margin-bottom: 1rem; }
+.winner-text { font-size: 24px; font-weight: 500; color: #0F6E56; margin-bottom: 1.5rem; }
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="header">
+    <div class="title">🥟 Dim Sum</div>
+    <div class="subtitle">The equation answer is shown — pick which two clues (A B C D) satisfy it</div>
+  </div>
+
+  <div id="main-game">
+    <div class="scoreboard">
+      <div class="team-card" id="tc1">
+        <div class="team-name" id="tn1" title="Double-click to rename">Team 1</div>
+        <div class="team-score" id="s1">0</div>
+      </div>
+      <div class="vs-badge">VS</div>
+      <div class="team-card" id="tc2">
+        <div class="team-name" id="tn2" title="Double-click to rename">Team 2</div>
+        <div class="team-score" id="s2">0</div>
+      </div>
+    </div>
+
+    <div class="turn-indicator" id="turn-ind"></div>
+    <div class="progress" id="progress"></div>
+    <div class="round-info" id="round-info"></div>
+
+    <div class="question-card">
+      <div id="cat-tag" class="cat-tag">Bible</div>
+      <div class="equation-box">
+        <div class="eq-label">Which two clues satisfy this equation?</div>
+        <div class="eq-main" id="eq-display"></div>
+      </div>
+      <div class="clues-grid" id="clues-grid"></div>
+      <div class="pick-section">
+        <div class="pick-label">Select the two clue letters that solve the equation:</div>
+        <div class="pick-buttons">
+          <button class="pick-btn" data-l="A" onclick="togglePick('A')">A</button>
+          <button class="pick-btn" data-l="B" onclick="togglePick('B')">B</button>
+          <button class="pick-btn" data-l="C" onclick="togglePick('C')">C</button>
+          <button class="pick-btn" data-l="D" onclick="togglePick('D')">D</button>
+        </div>
+      </div>
+      <div class="controls">
+        <div class="team-select-row">
+          <span class="answer-label">Answering team:</span>
+          <select id="team-sel">
+            <option value="0">Team 1</option>
+            <option value="1">Team 2</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" onclick="submitAnswer()">Submit</button>
+        <button class="btn" onclick="revealAll()">Reveal all</button>
+        <button class="btn" onclick="nextRound()">Next round →</button>
+      </div>
+      <div class="feedback-bar" id="feedback"></div>
+    </div>
+  </div>
+
+  <div class="game-over" id="game-over">
+    <h2>Game over!</h2>
+    <div class="final-scores" id="final-scores"></div>
+    <div class="winner-text" id="winner-text"></div>
+    <button class="btn btn-primary" onclick="resetGame()">Play again</button>
+  </div>
+</div>
+
+<script>
+const ROUNDS = [
+  {
+    cat:"bible",
+    clues:[
+      {l:"A",text:"Days of Creation (before God rested)",n:6},
+      {l:"B",text:"Number of Commandments",n:10},
+      {l:"C",text:"Persons in the Trinity",n:3},
+      {l:"D",text:"Books in the New Testament",n:27}
+    ],
+    answer:16, op:"+", correct:["A","B"]
+  },
+  {
+    cat:"bible",
+    clues:[
+      {l:"A",text:"Sons of Jacob (tribes of Israel)",n:12},
+      {l:"B",text:"Disciples of Jesus",n:12},
+      {l:"C",text:"Books of Moses (the Pentateuch)",n:5},
+      {l:"D",text:"Years Israel wandered the wilderness",n:40}
+    ],
+    answer:60, op:"×", correct:["A","C"]
+  },
+  {
+    cat:"general",
+    clues:[
+      {l:"A",text:"Sides on a stop sign",n:8},
+      {l:"B",text:"Players on a basketball team (on court)",n:5},
+      {l:"C",text:"Holes on a standard golf course",n:18},
+      {l:"D",text:"Days in a leap year",n:366}
+    ],
+    answer:40, op:"×", correct:["A","B"]
+  },
+  {
+    cat:"bible",
+    clues:[
+      {l:"A",text:"Silver pieces Judas received",n:30},
+      {l:"B",text:"Days Moses was on Mount Sinai",n:40},
+      {l:"C",text:"Books in the Old Testament",n:39},
+      {l:"D",text:"Age Jesus began his public ministry",n:30}
+    ],
+    answer:60, op:"+", correct:["A","D"]
+  },
+  {
+    cat:"general",
+    clues:[
+      {l:"A",text:"Rings in the Olympic logo",n:5},
+      {l:"B",text:"Stripes on the American flag",n:13},
+      {l:"C",text:"Letters in the English alphabet",n:26},
+      {l:"D",text:"Keys on a standard piano",n:88}
+    ],
+    answer:18, op:"+", correct:["A","B"]
+  },
+  {
+    cat:"bible",
+    clues:[
+      {l:"A",text:"Men in the fiery furnace (+ the mystery figure)",n:4},
+      {l:"B",text:"Plagues of Egypt",n:10},
+      {l:"C",text:"Chapters in Psalms",n:150},
+      {l:"D",text:"Letters Paul wrote (epistles)",n:13}
+    ],
+    answer:40, op:"+", correct:["B","D"]
+  },
+  {
+    cat:"general",
+    clues:[
+      {l:"A",text:"Teeth in an adult human mouth",n:32},
+      {l:"B",text:"Days in February (non-leap year)",n:28},
+      {l:"C",text:"Players on a soccer team (on field)",n:11},
+      {l:"D",text:"Planets in our solar system",n:8}
+    ],
+    answer:4, op:"−", correct:["D","C"]
+  },
+  {
+    cat:"bible",
+    clues:[
+      {l:"A",text:"Beatitudes in the Sermon on the Mount",n:8},
+      {l:"B",text:"Days Jesus was in the tomb",n:3},
+      {l:"C",text:"Wives of King Solomon",n:700},
+      {l:"D",text:"Books of John in the New Testament",n:4}
+    ],
+    answer:5, op:"−", correct:["A","B"]
+  },
+  {
+    cat:"general",
+    clues:[
+      {l:"A",text:"Planets in our solar system",n:8},
+      {l:"B",text:"Innings in a baseball game",n:9},
+      {l:"C",text:"Continents on Earth",n:7},
+      {l:"D",text:"Wonders of the Ancient World",n:7}
+    ],
+    answer:17, op:"+", correct:["A","B"]
+  },
+  {
+    cat:"bible",
+    clues:[
+      {l:"A",text:"Loaves of bread used to feed the 5000",n:5},
+      {l:"B",text:"Fish used to feed the 5000",n:2},
+      {l:"C",text:"Baskets of leftovers collected",n:12},
+      {l:"D",text:"Days of Noah's rain",n:40}
+    ],
+    answer:17, op:"+", correct:["A","C"]
+  },
+  {
+    cat:"bible",
+    clues:[
+      {l:"A",text:"Men Gideon defeated the Midianites with",n:300},
+      {l:"B",text:"Pieces of silver Joseph was sold for",n:20},
+      {l:"C",text:"Years Solomon's temple took to build",n:7},
+      {l:"D",text:"Days of Noah's rain",n:40}
+    ],
+    answer:60, op:"+", correct:["B","D"]
+  },
+  {
+    cat:"general",
+    clues:[
+      {l:"A",text:"Squares on a chess board",n:64},
+      {l:"B",text:"Cards in a standard deck",n:52},
+      {l:"C",text:"Hours in a day",n:24},
+      {l:"D",text:"Weeks in a year",n:52}
+    ],
+    answer:12, op:"−", correct:["A","B"]
+  },
+  {
+    cat:"bible",
+    clues:[
+      {l:"A",text:"Wings on a seraph (Isaiah 6)",n:6},
+      {l:"B",text:"Elders around the throne in Revelation",n:24},
+      {l:"C",text:"Years Solomon's temple took to build",n:7},
+      {l:"D",text:"Books in the Bible total",n:66}
+    ],
+    answer:13, op:"+", correct:["A","C"]
+  },
+  {
+    cat:"general",
+    clues:[
+      {l:"A",text:"States in the United States",n:50},
+      {l:"B",text:"Minutes in an hour",n:60},
+      {l:"C",text:"Weeks in a year",n:52},
+      {l:"D",text:"Countries in the United Kingdom",n:4}
+    ],
+    answer:102, op:"+", correct:["A","C"]
+  },
+  {
+    cat:"bible",
+    clues:[
+      {l:"A",text:"Fish in the miraculous catch (John 21)",n:153},
+      {l:"B",text:"Books in the Old Testament",n:39},
+      {l:"C",text:"Chapters in Psalms",n:150},
+      {l:"D",text:"Disciples of Jesus",n:12}
+    ],
+    answer:3, op:"−", correct:["C","D"]
+  }
+];
+
+let round=0, scores=[0,0], teamNames=["Team 1","Team 2"], currentTeam=0;
+let picked=[], answered=false;
+
+function buildProgress(){
+  const el=document.getElementById("progress");
+  el.innerHTML="";
+  ROUNDS.forEach((_,i)=>{
+    const d=document.createElement("div");
+    d.className="pdot"+(i<round?" done":i===round?" current":"");
+    el.appendChild(d);
+  });
+}
+
+function renderRound(){
+  const r=ROUNDS[round];
+  picked=[]; answered=false;
+  document.getElementById("round-info").textContent=`Round ${round+1} of ${ROUNDS.length}`;
+  document.getElementById("feedback").className="feedback-bar";
+  const tag=document.getElementById("cat-tag");
+  tag.textContent=r.cat==="bible"?"Bible":"General Knowledge";
+  tag.className="cat-tag"+(r.cat==="general"?" general":"");
+  document.getElementById("eq-display").textContent=`? ${r.op} ? = ${r.answer}`;
+  const grid=document.getElementById("clues-grid");
+  grid.innerHTML="";
+  r.clues.forEach(c=>{
+    const row=document.createElement("div");
+    row.className="clue-row";
+    row.id="cr-"+c.l;
+    row.innerHTML=`<span class="clue-letter">${c.l}</span><span class="clue-text">${c.text}</span><span class="clue-answer">${c.n}</span>`;
+    grid.appendChild(row);
+  });
+  document.querySelectorAll(".pick-btn").forEach(b=>b.className="pick-btn");
+  document.getElementById("team-sel").value=String(currentTeam);
+  updateTurnIndicator();
+  buildProgress();
+}
+
+function togglePick(l){
+  if(answered)return;
+  const btn=document.querySelector(`.pick-btn[data-l="${l}"]`);
+  if(picked.includes(l)){
+    picked=picked.filter(x=>x!==l);
+    btn.classList.remove("selected");
+  } else {
+    if(picked.length>=2)return;
+    picked.push(l);
+    btn.classList.add("selected");
+  }
+}
+
+function submitAnswer(){
+  if(answered)return;
+  if(picked.length!==2){alert("Pick exactly two clue letters!");return;}
+  const r=ROUNDS[round];
+  const teamIdx=parseInt(document.getElementById("team-sel").value);
+  answered=true;
+  const sortedPicked=[...picked].sort().join(",");
+  const sortedCorrect=[...r.correct].sort().join(",");
+  const isCorrect=sortedPicked===sortedCorrect;
+  r.clues.forEach(c=>{
+    const el=document.getElementById("cr-"+c.l);
+    el.classList.add("revealed");
+    el.classList.add(r.correct.includes(c.l)?"correct-reveal":"wrong-reveal");
+  });
+  const [c1,c2]=r.correct;
+  const n1=r.clues.find(c=>c.l===c1).n;
+  const n2=r.clues.find(c=>c.l===c2).n;
+  document.getElementById("eq-display").textContent=`${n1} ${r.op} ${n2} = ${r.answer}`;
+  const fb=document.getElementById("feedback");
+  if(isCorrect){
+    scores[teamIdx]++;
+    document.getElementById("s"+(teamIdx+1)).textContent=scores[teamIdx];
+    fb.textContent=`✓ Correct! ${teamNames[teamIdx]} scores! (${c1}=${n1}, ${c2}=${n2})`;
+    fb.className="feedback-bar correct";
+  } else {
+    fb.textContent=`✗ Wrong! The answer was ${r.correct.join(" and ")}. (${c1}=${n1}, ${c2}=${n2})`;
+    fb.className="feedback-bar wrong";
+  }
+  currentTeam=1-currentTeam;
+  updateTurnIndicator();
+}
+
+function revealAll(){
+  const r=ROUNDS[round];
+  r.clues.forEach(c=>{
+    const el=document.getElementById("cr-"+c.l);
+    el.classList.add("revealed");
+    el.classList.add(r.correct.includes(c.l)?"correct-reveal":"wrong-reveal");
+  });
+  const [c1,c2]=r.correct;
+  const n1=r.clues.find(c=>c.l===c1).n;
+  const n2=r.clues.find(c=>c.l===c2).n;
+  document.getElementById("eq-display").textContent=`${n1} ${r.op} ${n2} = ${r.answer}`;
+}
+
+function nextRound(){
+  round++;
+  if(round>=ROUNDS.length)showGameOver();
+  else renderRound();
+}
+
+function updateTurnIndicator(){
+  document.getElementById("turn-ind").textContent=`${teamNames[currentTeam]}'s turn to answer`;
+  document.getElementById("tc1").className="team-card"+(currentTeam===0?" active":"");
+  document.getElementById("tc2").className="team-card"+(currentTeam===1?" active":"");
+}
+
+function showGameOver(){
+  document.getElementById("main-game").style.display="none";
+  const go=document.getElementById("game-over");
+  go.style.display="block";
+  document.getElementById("final-scores").textContent=`${teamNames[0]}: ${scores[0]} pts  ·  ${teamNames[1]}: ${scores[1]} pts`;
+  let w=scores[0]>scores[1]?`🏆 ${teamNames[0]} wins!`:scores[1]>scores[0]?`🏆 ${teamNames[1]} wins!`:"It's a tie!";
+  document.getElementById("winner-text").textContent=w;
+}
+
+function resetGame(){
+  round=0; scores=[0,0]; currentTeam=0;
+  document.getElementById("s1").textContent=0;
+  document.getElementById("s2").textContent=0;
+  document.getElementById("main-game").style.display="block";
+  document.getElementById("game-over").style.display="none";
+  renderRound();
+}
+
+document.getElementById("tn1").ondblclick=()=>{
+  const n=prompt("Name for Team 1:",teamNames[0]);
+  if(n){teamNames[0]=n;document.getElementById("tn1").textContent=n;document.getElementById("team-sel").options[0].text=n;updateTurnIndicator();}
+};
+document.getElementById("tn2").ondblclick=()=>{
+  const n=prompt("Name for Team 2:",teamNames[1]);
+  if(n){teamNames[1]=n;document.getElementById("tn2").textContent=n;document.getElementById("team-sel").options[1].text=n;updateTurnIndicator();}
+};
+
+renderRound();
+</script>
+</body>
+</html>
