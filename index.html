@@ -19,6 +19,10 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #f5f4f0; c
 .team-score { font-size: 36px; font-weight: 500; color: #1a1a18; }
 .vs-badge { text-align: center; font-size: 16px; color: #5f5e5a; }
 .turn-indicator { text-align: center; font-size: 13px; font-weight: 500; color: #0F6E56; margin-bottom: 0.75rem; }
+.first-turn-setup { display: flex; gap: 8px; align-items: center; justify-content: center; flex-wrap: wrap; margin-bottom: 0.75rem; font-size: 13px; color: #5f5e5a; }
+.first-team-btn { padding: 4px 12px; font-size: 12px; border-radius: 8px; border: 0.5px solid rgba(0,0,0,0.3); background: #fff; color: #1a1a18; cursor: pointer; font-family: inherit; }
+.first-team-btn:hover { background: #f5f4f0; }
+.first-team-btn.selected { background: #1D9E75; color: #fff; border-color: #1D9E75; }
 .progress { display: flex; gap: 4px; justify-content: center; margin-bottom: 0.75rem; }
 .pdot { width: 12px; height: 12px; border-radius: 50%; background: #e8e7e0; border: 0.5px solid rgba(0,0,0,0.15); }
 .pdot.done { background: #1D9E75; border-color: #1D9E75; }
@@ -79,6 +83,11 @@ select { font-size: 13px; padding: 7px 10px; border-radius: 8px; border: 0.5px s
       </div>
     </div>
 
+    <div id="first-turn-setup" class="first-turn-setup">
+      <span>🪙 Coin flip — who goes first?</span>
+      <button class="first-team-btn" data-team="0" onclick="setFirstTeam(0)">Team 1</button>
+      <button class="first-team-btn" data-team="1" onclick="setFirstTeam(1)">Team 2</button>
+    </div>
     <div class="turn-indicator" id="turn-ind"></div>
     <div class="progress" id="progress"></div>
     <div class="round-info" id="round-info"></div>
@@ -130,6 +139,8 @@ async function loadGameData(){
       document.getElementById("tn2").textContent=teamNames[1];
       document.getElementById("team-sel").options[0].text=teamNames[0];
       document.getElementById("team-sel").options[1].text=teamNames[1];
+      document.querySelector('.first-team-btn[data-team="0"]').textContent=teamNames[0];
+      document.querySelector('.first-team-btn[data-team="1"]').textContent=teamNames[1];
     }
     renderRound();
   } catch(err){
@@ -155,6 +166,7 @@ function renderRound(){
   picked=[]; answered=false;
   document.getElementById("round-info").textContent=`Round ${round+1} of ${ROUNDS.length}`;
   document.getElementById("feedback").className="feedback-bar";
+  document.getElementById("first-turn-setup").style.display=round===0?"flex":"none";
   document.getElementById("eq-display").textContent=`? ${r.op} ? = ${r.answer}`;
   const grid=document.getElementById("clues-grid");
   grid.innerHTML="";
@@ -212,7 +224,15 @@ function submitAnswer(){
     fb.textContent=`✗ Wrong! The answer was ${r.correct.join(" and ")}. (${c1}=${n1}, ${c2}=${n2})`;
     fb.className="feedback-bar wrong";
   }
-  currentTeam=1-currentTeam;
+  currentTeam=1-teamIdx;
+  updateTurnIndicator();
+}
+
+function setFirstTeam(idx){
+  if(round!==0||answered)return;
+  currentTeam=idx;
+  document.getElementById("team-sel").value=String(currentTeam);
+  document.querySelectorAll(".first-team-btn").forEach(b=>b.classList.toggle("selected",parseInt(b.dataset.team)===idx));
   updateTurnIndicator();
 }
 
@@ -261,11 +281,11 @@ function resetGame(){
 
 document.getElementById("tn1").ondblclick=()=>{
   const n=prompt("Name for Team 1:",teamNames[0]);
-  if(n){teamNames[0]=n;document.getElementById("tn1").textContent=n;document.getElementById("team-sel").options[0].text=n;updateTurnIndicator();}
+  if(n){teamNames[0]=n;document.getElementById("tn1").textContent=n;document.getElementById("team-sel").options[0].text=n;document.querySelector('.first-team-btn[data-team="0"]').textContent=n;updateTurnIndicator();}
 };
 document.getElementById("tn2").ondblclick=()=>{
   const n=prompt("Name for Team 2:",teamNames[1]);
-  if(n){teamNames[1]=n;document.getElementById("tn2").textContent=n;document.getElementById("team-sel").options[1].text=n;updateTurnIndicator();}
+  if(n){teamNames[1]=n;document.getElementById("tn2").textContent=n;document.getElementById("team-sel").options[1].text=n;document.querySelector('.first-team-btn[data-team="1"]').textContent=n;updateTurnIndicator();}
 };
 
 loadGameData();
