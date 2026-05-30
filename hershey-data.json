@@ -67,9 +67,9 @@
     {
       "clues": [
         {"l": "A", "text": "Workers at the Lancaster caramel factory", "n": 1300},
-        {"l": "B", "text": "Year Shaq-a-licious XL gummies were introduced", "n": 2024},
+        {"l": "B", "text": "Year Shaq-a-licious XL gummies introduced (solar eclipse)", "n": 2024},
         {"l": "C", "text": "Golden Tickets in Charlie and the Chocolate Factory", "n": 5},
-        {"l": "D", "text": "Year Hershey debuted a protein snack bar", "n": 2019}
+        {"l": "D", "text": "Year Hershey debuted protein snack bar (Notre Dame fire)", "n": 2019}
       ],
       "answer": 5, "op": "−", "correct": ["B", "D"]
     },
@@ -84,12 +84,12 @@
     },
     {
       "clues": [
-        {"l": "A", "text": "Maximum people allowed in a people-mover ride car", "n": 4},
+        {"l": "A", "text": "Maximum people allowed in a people-mover ride car", "n": 5},
         {"l": "B", "text": "Cops Mr. Crory interrogated about townships", "n": 1},
         {"l": "C", "text": "Ration bars produced per day during WWII", "n": 100000},
         {"l": "D", "text": "Chocolate bars the Buckley/Crory kids tasted with only nibs and cinnamon", "n": 4}
       ],
-      "answer": 16, "op": "×", "correct": ["A", "D"]
+      "answer": 20, "op": "×", "correct": ["A", "D"]
     },
     {
       "clues": [

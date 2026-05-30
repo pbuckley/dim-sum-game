@@ -103,7 +103,7 @@
     {
       "clues": [
         {"l": "A", "text": "Elders around the throne in Revelation", "n": 24},
-        {"l": "B", "text": "Disciples of Jesus", "n": 12},
+        {"l": "B", "text": "Apostles of Jesus", "n": 12},
         {"l": "C", "text": "Slices in a typical pizza", "n": 8},
         {"l": "D", "text": "Books of Moses (the Pentateuch)", "n": 5}
       ],
@@ -123,7 +123,7 @@
         {"l": "A", "text": "Books in the Bible total", "n": 66},
         {"l": "B", "text": "Books in the New Testament", "n": 27},
         {"l": "C", "text": "Wheels on a tricycle", "n": 3},
-        {"l": "D", "text": "Disciples of Jesus", "n": 12}
+        {"l": "D", "text": "Apostles of Jesus", "n": 12}
       ],
       "answer": 39, "op": "−", "correct": ["A", "B"]
     },
@@ -132,7 +132,7 @@
         {"l": "A", "text": "Fish in the miraculous catch (John 21)", "n": 153},
         {"l": "B", "text": "Days of the week", "n": 7},
         {"l": "C", "text": "Chapters in Psalms", "n": 150},
-        {"l": "D", "text": "Disciples of Jesus", "n": 12}
+        {"l": "D", "text": "Apostles of Jesus", "n": 12}
       ],
       "answer": 3, "op": "−", "correct": ["A", "C"]
     }
