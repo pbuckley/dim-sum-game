@@ -72,14 +72,23 @@ if (typeof window !== "undefined") window.validateGameData = validateGameData;
 
 if (typeof require !== "undefined" && typeof module !== "undefined" && require.main === module) {
   const fs = require("fs");
-  const path = process.argv[2] || "game-data.json";
-  const data = JSON.parse(fs.readFileSync(path, "utf8"));
-  const errors = validateGameData(data);
-  if (errors.length) {
-    console.error(`FAIL: ${errors.length} issue(s) in ${path}:`);
-    errors.forEach(e => console.error("  - " + e));
+  const args = process.argv.slice(2);
+  const paths = args.length ? args : fs.readdirSync(".").filter(f => f.endsWith("-data.json")).sort();
+  if (!paths.length) {
+    console.error("FAIL: no *-data.json files found in current directory");
     process.exit(1);
-  } else {
-    console.log(`OK: ${data.rounds.length} rounds validated, no issues`);
   }
+  let failed = 0;
+  for (const path of paths) {
+    const data = JSON.parse(fs.readFileSync(path, "utf8"));
+    const errors = validateGameData(data);
+    if (errors.length) {
+      failed++;
+      console.error(`FAIL ${path}: ${errors.length} issue(s)`);
+      errors.forEach(e => console.error("  - " + e));
+    } else {
+      console.log(`OK   ${path}: ${data.rounds.length} rounds`);
+    }
+  }
+  process.exit(failed ? 1 : 0);
 }

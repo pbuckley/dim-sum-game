@@ -3,21 +3,303 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🍫 Hershey — Coming Soon</title>
+<title>🍫 Hershey</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: system-ui, -apple-system, sans-serif; background: #f5f4f0; color: #1a1a18; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1rem; text-align: center; }
-.emoji { font-size: 120px; line-height: 1; margin-bottom: 1.5rem; }
-h1 { font-size: 32px; font-weight: 500; margin-bottom: 8px; }
-p { font-size: 16px; color: #5f5e5a; margin-bottom: 2rem; }
-a { color: #1D9E75; text-decoration: none; font-size: 14px; }
-a:hover { text-decoration: underline; }
+body { font-family: system-ui, -apple-system, sans-serif; background: #f5f4f0; color: #1a1a18; min-height: 100vh; padding: 1rem; }
+#app { max-width: 900px; margin: 0 auto; }
+.header { text-align: center; margin-bottom: 1.25rem; }
+.title { font-size: 32px; font-weight: 500; color: #1a1a18; }
+.subtitle { font-size: 13px; color: #5f5e5a; margin-top: 4px; }
+.scoreboard { display: grid; grid-template-columns: 1fr auto 1fr; gap: 12px; margin-bottom: 1rem; align-items: center; }
+.team-card { background: #fff; border: 0.5px solid rgba(0,0,0,0.15); border-radius: 12px; padding: 0.75rem 1rem; text-align: center; }
+.team-card.active { border: 2px solid #1D9E75; }
+.team-name { font-size: 12px; color: #5f5e5a; margin-bottom: 2px; cursor: pointer; }
+.team-score { font-size: 36px; font-weight: 500; color: #1a1a18; }
+.vs-badge { text-align: center; font-size: 16px; color: #5f5e5a; }
+.turn-indicator { text-align: center; font-size: 13px; font-weight: 500; color: #0F6E56; margin-bottom: 0.75rem; }
+.first-turn-setup { display: flex; gap: 8px; align-items: center; justify-content: center; flex-wrap: wrap; margin-bottom: 0.75rem; font-size: 13px; color: #5f5e5a; }
+.first-team-btn { padding: 4px 12px; font-size: 12px; border-radius: 8px; border: 0.5px solid rgba(0,0,0,0.3); background: #fff; color: #1a1a18; cursor: pointer; font-family: inherit; }
+.first-team-btn:hover { background: #f5f4f0; }
+.first-team-btn.selected { background: #1D9E75; color: #fff; border-color: #1D9E75; }
+.progress { display: flex; gap: 4px; justify-content: center; margin-bottom: 0.75rem; }
+.pdot { width: 12px; height: 12px; border-radius: 50%; background: #e8e7e0; border: 0.5px solid rgba(0,0,0,0.15); }
+.pdot.done { background: #1D9E75; border-color: #1D9E75; }
+.pdot.current { background: #FAC775; border-color: #EF9F27; }
+.round-info { text-align: center; font-size: 12px; color: #5f5e5a; margin-bottom: 0.75rem; }
+.question-card { background: #fff; border: 0.5px solid rgba(0,0,0,0.15); border-radius: 12px; padding: 1.25rem; }
+.equation-box { background: #E6F1FB; border: 0.5px solid #85B7EB; border-radius: 8px; padding: 1rem 1.25rem; text-align: center; margin-bottom: 1.25rem; }
+.eq-label { font-size: 12px; color: #185FA5; margin-bottom: 4px; }
+.eq-main { font-size: 28px; font-weight: 500; color: #042C53; font-family: monospace; letter-spacing: 2px; }
+.clues-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 1.25rem; }
+.clue-row { display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 8px; border: 0.5px solid rgba(0,0,0,0.15); background: #f5f4f0; cursor: pointer; user-select: none; transition: background 0.1s, border-color 0.1s; }
+.clue-row:hover { background: #ecebe4; }
+.clue-row.selected { background: #185FA5; border-color: #185FA5; }
+.clue-row.selected .clue-letter, .clue-row.selected .clue-text { color: #fff; }
+.clue-row.selected:hover { background: #134E87; }
+.clue-row.correct-reveal { background: #E1F5EE; border-color: #5DCAA5; cursor: default; }
+.clue-row.correct-reveal .clue-letter, .clue-row.correct-reveal .clue-text { color: #1a1a18; }
+.clue-row.wrong-reveal { background: #FAECE7; border-color: #F0997B; cursor: default; }
+.clue-row.wrong-reveal .clue-letter, .clue-row.wrong-reveal .clue-text { color: #1a1a18; }
+.clue-letter { font-size: 14px; font-weight: 500; color: #5f5e5a; min-width: 18px; }
+.clue-text { font-size: 13px; color: #1a1a18; flex: 1; }
+.clue-answer { font-size: 15px; font-weight: 500; min-width: 36px; text-align: right; color: #0F6E56; display: none; }
+.clue-row.revealed .clue-answer { display: block; }
+.controls { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 1rem; }
+.team-select-row { display: flex; align-items: center; gap: 8px; flex: 1; }
+.answer-label { font-size: 13px; color: #5f5e5a; white-space: nowrap; }
+select { font-size: 13px; padding: 7px 10px; border-radius: 8px; border: 0.5px solid rgba(0,0,0,0.3); background: #fff; color: #1a1a18; font-family: inherit; }
+.btn { padding: 8px 16px; border-radius: 8px; border: 0.5px solid rgba(0,0,0,0.3); background: #fff; color: #1a1a18; font-size: 13px; cursor: pointer; font-family: inherit; }
+.btn:hover { background: #f5f4f0; }
+.btn-primary { background: #1D9E75; color: white; border-color: #1D9E75; }
+.btn-primary:hover { background: #0F6E56; }
+.feedback-bar { padding: 10px 14px; border-radius: 8px; text-align: center; font-size: 14px; font-weight: 500; margin-top: 10px; display: none; }
+.feedback-bar.correct { background: #E1F5EE; color: #0F6E56; display: block; }
+.feedback-bar.wrong { background: #FAECE7; color: #993C1D; display: block; }
+.game-over { text-align: center; padding: 3rem 2rem; display: none; background: #fff; border-radius: 12px; border: 0.5px solid rgba(0,0,0,0.15); }
+.game-over h2 { font-size: 28px; font-weight: 500; margin-bottom: 8px; }
+.final-scores { font-size: 18px; color: #5f5e5a; margin-bottom: 1rem; }
+.winner-text { font-size: 24px; font-weight: 500; color: #0F6E56; margin-bottom: 1.5rem; }
 </style>
 </head>
 <body>
-  <div class="emoji">🍫</div>
-  <h1>Hershey</h1>
-  <p>Coming soon</p>
-  <a href="index.html">← Back to games</a>
+<div id="app">
+  <div class="header">
+    <div class="title">🍫 Hershey</div>
+    <div class="subtitle">The equation answer is shown — click the two clues that satisfy it</div>
+  </div>
+
+  <div id="main-game">
+    <div class="scoreboard">
+      <div class="team-card" id="tc1">
+        <div class="team-name" id="tn1" title="Double-click to rename">Team 1</div>
+        <div class="team-score" id="s1">0</div>
+      </div>
+      <div class="vs-badge">VS</div>
+      <div class="team-card" id="tc2">
+        <div class="team-name" id="tn2" title="Double-click to rename">Team 2</div>
+        <div class="team-score" id="s2">0</div>
+      </div>
+    </div>
+
+    <div id="first-turn-setup" class="first-turn-setup">
+      <span>🪙 Coin flip — who goes first?</span>
+      <button class="first-team-btn" data-team="0" onclick="setFirstTeam(0)">Team 1</button>
+      <button class="first-team-btn" data-team="1" onclick="setFirstTeam(1)">Team 2</button>
+    </div>
+    <div class="turn-indicator" id="turn-ind"></div>
+    <div class="progress" id="progress"></div>
+    <div class="round-info" id="round-info"></div>
+
+    <div class="question-card">
+      <div class="equation-box">
+        <div class="eq-label">Which two clues satisfy this equation?</div>
+        <div class="eq-main" id="eq-display"></div>
+      </div>
+      <div class="clues-grid" id="clues-grid"></div>
+      <div class="controls">
+        <div class="team-select-row">
+          <span class="answer-label">Answering team:</span>
+          <select id="team-sel">
+            <option value="0">Team 1</option>
+            <option value="1">Team 2</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" onclick="submitAnswer()">Submit</button>
+        <button class="btn" onclick="revealAll()">Reveal all</button>
+        <button class="btn" onclick="nextRound()">Next round →</button>
+      </div>
+      <div class="feedback-bar" id="feedback"></div>
+    </div>
+  </div>
+
+  <div class="game-over" id="game-over">
+    <h2>Game over!</h2>
+    <div class="final-scores" id="final-scores"></div>
+    <div class="winner-text" id="winner-text"></div>
+    <button class="btn btn-primary" onclick="resetGame()">Play again</button>
+  </div>
+</div>
+
+<script src="validate.js"></script>
+<script>
+let ROUNDS=[];
+let round=0, scores=[0,0], teamNames=["Team 1","Team 2"], currentTeam=0;
+let picked=[], answered=false;
+
+async function loadGameData(){
+  try {
+    const res=await fetch("hershey-data.json",{cache:"no-store"});
+    if(!res.ok)throw new Error(`HTTP ${res.status}`);
+    const data=await res.json();
+    const errors=validateGameData(data);
+    if(errors.length){
+      document.getElementById("main-game").innerHTML=
+        `<div class="question-card" style="border-color:#F0997B">`+
+        `<h3 style="margin-bottom:8px;color:#993C1D">Game data validation failed (${errors.length} issue${errors.length>1?'s':''})</h3>`+
+        `<ul style="margin-left:1.25rem;font-size:13px;line-height:1.6">`+
+        errors.map(e=>`<li>${e}</li>`).join("")+
+        `</ul><p style="font-size:13px;color:#5f5e5a;margin-top:8px">Fix these in hershey-data.json and reload.</p></div>`;
+      return;
+    }
+    ROUNDS=data.rounds||[];
+    if(Array.isArray(data.teams)&&data.teams.length>=2){
+      teamNames=[data.teams[0],data.teams[1]];
+      document.getElementById("tn1").textContent=teamNames[0];
+      document.getElementById("tn2").textContent=teamNames[1];
+      document.getElementById("team-sel").options[0].text=teamNames[0];
+      document.getElementById("team-sel").options[1].text=teamNames[1];
+      document.querySelector('.first-team-btn[data-team="0"]').textContent=teamNames[0];
+      document.querySelector('.first-team-btn[data-team="1"]').textContent=teamNames[1];
+    }
+    renderRound();
+  } catch(err){
+    document.getElementById("main-game").innerHTML=
+      `<div class="question-card"><h3 style="margin-bottom:8px">Couldn't load hershey-data.json</h3>`+
+      `<p style="font-size:13px;color:#5f5e5a">${err.message}. If you opened this file directly, serve it instead: `+
+      `<code>python3 -m http.server</code> from the project folder, then visit http://localhost:8000/</p></div>`;
+  }
+}
+
+function buildProgress(){
+  const el=document.getElementById("progress");
+  el.innerHTML="";
+  ROUNDS.forEach((_,i)=>{
+    const d=document.createElement("div");
+    d.className="pdot"+(i<round?" done":i===round?" current":"");
+    el.appendChild(d);
+  });
+}
+
+function renderRound(){
+  const r=ROUNDS[round];
+  picked=[]; answered=false;
+  document.getElementById("round-info").textContent=`Round ${round+1} of ${ROUNDS.length}`;
+  document.getElementById("feedback").className="feedback-bar";
+  document.getElementById("first-turn-setup").style.display=round===0?"flex":"none";
+  document.getElementById("eq-display").textContent=`? ${r.op} ? = ${r.answer}`;
+  const grid=document.getElementById("clues-grid");
+  grid.innerHTML="";
+  r.clues.forEach(c=>{
+    const row=document.createElement("div");
+    row.className="clue-row";
+    row.id="cr-"+c.l;
+    row.innerHTML=`<span class="clue-letter">${c.l}</span><span class="clue-text">${c.text}</span><span class="clue-answer">${c.n}</span>`;
+    row.onclick=()=>togglePick(c.l);
+    grid.appendChild(row);
+  });
+  document.getElementById("team-sel").value=String(currentTeam);
+  updateTurnIndicator();
+  buildProgress();
+}
+
+function togglePick(l){
+  if(answered)return;
+  const row=document.getElementById("cr-"+l);
+  if(picked.includes(l)){
+    picked=picked.filter(x=>x!==l);
+    row.classList.remove("selected");
+  } else {
+    if(picked.length>=2)return;
+    picked.push(l);
+    row.classList.add("selected");
+  }
+}
+
+function submitAnswer(){
+  if(answered)return;
+  if(picked.length!==2){alert("Pick exactly two clue letters!");return;}
+  const r=ROUNDS[round];
+  const teamIdx=parseInt(document.getElementById("team-sel").value);
+  answered=true;
+  const sortedPicked=[...picked].sort().join(",");
+  const sortedCorrect=[...r.correct].sort().join(",");
+  const isCorrect=sortedPicked===sortedCorrect;
+  r.clues.forEach(c=>{
+    const el=document.getElementById("cr-"+c.l);
+    el.classList.add("revealed");
+    el.classList.add(r.correct.includes(c.l)?"correct-reveal":"wrong-reveal");
+  });
+  const [c1,c2]=r.correct;
+  const n1=r.clues.find(c=>c.l===c1).n;
+  const n2=r.clues.find(c=>c.l===c2).n;
+  document.getElementById("eq-display").textContent=`${n1} ${r.op} ${n2} = ${r.answer}`;
+  const fb=document.getElementById("feedback");
+  if(isCorrect){
+    scores[teamIdx]++;
+    document.getElementById("s"+(teamIdx+1)).textContent=scores[teamIdx];
+    fb.textContent=`✓ Correct! ${teamNames[teamIdx]} scores! (${c1}=${n1}, ${c2}=${n2})`;
+    fb.className="feedback-bar correct";
+  } else {
+    fb.textContent=`✗ Wrong! The answer was ${r.correct.join(" and ")}. (${c1}=${n1}, ${c2}=${n2})`;
+    fb.className="feedback-bar wrong";
+  }
+  currentTeam=1-teamIdx;
+  updateTurnIndicator();
+}
+
+function setFirstTeam(idx){
+  if(round!==0||answered)return;
+  currentTeam=idx;
+  document.getElementById("team-sel").value=String(currentTeam);
+  document.querySelectorAll(".first-team-btn").forEach(b=>b.classList.toggle("selected",parseInt(b.dataset.team)===idx));
+  updateTurnIndicator();
+}
+
+function revealAll(){
+  const r=ROUNDS[round];
+  r.clues.forEach(c=>{
+    const el=document.getElementById("cr-"+c.l);
+    el.classList.add("revealed");
+    el.classList.add(r.correct.includes(c.l)?"correct-reveal":"wrong-reveal");
+  });
+  const [c1,c2]=r.correct;
+  const n1=r.clues.find(c=>c.l===c1).n;
+  const n2=r.clues.find(c=>c.l===c2).n;
+  document.getElementById("eq-display").textContent=`${n1} ${r.op} ${n2} = ${r.answer}`;
+}
+
+function nextRound(){
+  round++;
+  if(round>=ROUNDS.length)showGameOver();
+  else renderRound();
+}
+
+function updateTurnIndicator(){
+  document.getElementById("turn-ind").textContent=`${teamNames[currentTeam]}'s turn to answer`;
+  document.getElementById("tc1").className="team-card"+(currentTeam===0?" active":"");
+  document.getElementById("tc2").className="team-card"+(currentTeam===1?" active":"");
+}
+
+function showGameOver(){
+  document.getElementById("main-game").style.display="none";
+  const go=document.getElementById("game-over");
+  go.style.display="block";
+  document.getElementById("final-scores").textContent=`${teamNames[0]}: ${scores[0]} pts  ·  ${teamNames[1]}: ${scores[1]} pts`;
+  let w=scores[0]>scores[1]?`🏆 ${teamNames[0]} wins!`:scores[1]>scores[0]?`🏆 ${teamNames[1]} wins!`:"It's a tie!";
+  document.getElementById("winner-text").textContent=w;
+}
+
+function resetGame(){
+  round=0; scores=[0,0]; currentTeam=0;
+  document.getElementById("s1").textContent=0;
+  document.getElementById("s2").textContent=0;
+  document.getElementById("main-game").style.display="block";
+  document.getElementById("game-over").style.display="none";
+  renderRound();
+}
+
+document.getElementById("tn1").ondblclick=()=>{
+  const n=prompt("Name for Team 1:",teamNames[0]);
+  if(n){teamNames[0]=n;document.getElementById("tn1").textContent=n;document.getElementById("team-sel").options[0].text=n;document.querySelector('.first-team-btn[data-team="0"]').textContent=n;updateTurnIndicator();}
+};
+document.getElementById("tn2").ondblclick=()=>{
+  const n=prompt("Name for Team 2:",teamNames[1]);
+  if(n){teamNames[1]=n;document.getElementById("tn2").textContent=n;document.getElementById("team-sel").options[1].text=n;document.querySelector('.first-team-btn[data-team="1"]').textContent=n;updateTurnIndicator();}
+};
+
+loadGameData();
+</script>
 </body>
 </html>

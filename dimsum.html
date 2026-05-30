@@ -130,7 +130,7 @@ let picked=[], answered=false;
 
 async function loadGameData(){
   try {
-    const res=await fetch("game-data.json",{cache:"no-store"});
+    const res=await fetch("dimsum-data.json",{cache:"no-store"});
     if(!res.ok)throw new Error(`HTTP ${res.status}`);
     const data=await res.json();
     const errors=validateGameData(data);
@@ -140,7 +140,7 @@ async function loadGameData(){
         `<h3 style="margin-bottom:8px;color:#993C1D">Game data validation failed (${errors.length} issue${errors.length>1?'s':''})</h3>`+
         `<ul style="margin-left:1.25rem;font-size:13px;line-height:1.6">`+
         errors.map(e=>`<li>${e}</li>`).join("")+
-        `</ul><p style="font-size:13px;color:#5f5e5a;margin-top:8px">Fix these in game-data.json and reload.</p></div>`;
+        `</ul><p style="font-size:13px;color:#5f5e5a;margin-top:8px">Fix these in dimsum-data.json and reload.</p></div>`;
       return;
     }
     ROUNDS=data.rounds||[];
@@ -156,7 +156,7 @@ async function loadGameData(){
     renderRound();
   } catch(err){
     document.getElementById("main-game").innerHTML=
-      `<div class="question-card"><h3 style="margin-bottom:8px">Couldn't load game-data.json</h3>`+
+      `<div class="question-card"><h3 style="margin-bottom:8px">Couldn't load dimsum-data.json</h3>`+
       `<p style="font-size:13px;color:#5f5e5a">${err.message}. If you opened this file directly, serve it instead: `+
       `<code>python3 -m http.server</code> from the project folder, then visit http://localhost:8000/</p></div>`;
   }

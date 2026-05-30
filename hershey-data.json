@@ -1,0 +1,140 @@
+{
+  "teams": ["Team 1", "Team 2"],
+  "rounds": [
+    {
+      "clues": [
+        {"l": "A", "text": "Days of Creation (before God rested)", "n": 6},
+        {"l": "B", "text": "Number of Commandments", "n": 10},
+        {"l": "C", "text": "Wheels on a tricycle", "n": 3},
+        {"l": "D", "text": "Books in the New Testament", "n": 27}
+      ],
+      "answer": 16, "op": "+", "correct": ["A", "B"]
+    },
+    {
+      "clues": [
+        {"l": "A", "text": "Sons of Jacob (tribes of Israel)", "n": 12},
+        {"l": "B", "text": "Days Jesus was in the tomb", "n": 3},
+        {"l": "C", "text": "Books of Moses (the Pentateuch)", "n": 5},
+        {"l": "D", "text": "Books in The Chronicles of Narnia", "n": 7}
+      ],
+      "answer": 60, "op": "×", "correct": ["A", "C"]
+    },
+    {
+      "clues": [
+        {"l": "A", "text": "Sides on a stop sign", "n": 8},
+        {"l": "B", "text": "Books of Moses (the Pentateuch)", "n": 5},
+        {"l": "C", "text": "Persons in the Trinity", "n": 3},
+        {"l": "D", "text": "Days of Noah's rain", "n": 40}
+      ],
+      "answer": 40, "op": "×", "correct": ["A", "B"]
+    },
+    {
+      "clues": [
+        {"l": "A", "text": "Silver pieces Judas received", "n": 30},
+        {"l": "B", "text": "Days in Lent", "n": 40},
+        {"l": "C", "text": "Books in the Old Testament", "n": 39},
+        {"l": "D", "text": "Age Jesus began his public ministry", "n": 30}
+      ],
+      "answer": 60, "op": "+", "correct": ["A", "D"]
+    },
+    {
+      "clues": [
+        {"l": "A", "text": "Loaves of bread used to feed the 5000", "n": 5},
+        {"l": "B", "text": "Letters Paul wrote (epistles)", "n": 13},
+        {"l": "C", "text": "Wheels on a car", "n": 4},
+        {"l": "D", "text": "Persons in the Trinity", "n": 3}
+      ],
+      "answer": 18, "op": "+", "correct": ["A", "B"]
+    },
+    {
+      "clues": [
+        {"l": "A", "text": "Men in the fiery furnace (+ the mystery figure)", "n": 4},
+        {"l": "B", "text": "Plagues of Egypt", "n": 10},
+        {"l": "C", "text": "Days of Christmas (the song)", "n": 12},
+        {"l": "D", "text": "Letters Paul wrote (epistles)", "n": 13}
+      ],
+      "answer": 23, "op": "+", "correct": ["B", "D"]
+    },
+    {
+      "clues": [
+        {"l": "A", "text": "Days Moses was on Mount Sinai", "n": 40},
+        {"l": "B", "text": "Slices in a typical pizza", "n": 8},
+        {"l": "C", "text": "Plagues of Egypt", "n": 10},
+        {"l": "D", "text": "Wings on a seraph (Isaiah 6)", "n": 6}
+      ],
+      "answer": 30, "op": "−", "correct": ["A", "C"]
+    },
+    {
+      "clues": [
+        {"l": "A", "text": "Beatitudes in the Sermon on the Mount", "n": 8},
+        {"l": "B", "text": "Days Jesus was in the tomb", "n": 3},
+        {"l": "C", "text": "VeggieTales main characters (Bob and Larry)", "n": 2},
+        {"l": "D", "text": "Books of John in the New Testament", "n": 4}
+      ],
+      "answer": 5, "op": "−", "correct": ["A", "B"]
+    },
+    {
+      "clues": [
+        {"l": "A", "text": "Beatitudes in the Sermon on the Mount", "n": 8},
+        {"l": "B", "text": "Fruits of the Spirit (Galatians 5)", "n": 9},
+        {"l": "C", "text": "Continents on Earth", "n": 7},
+        {"l": "D", "text": "Days of Creation (before God rested)", "n": 6}
+      ],
+      "answer": 17, "op": "+", "correct": ["A", "B"]
+    },
+    {
+      "clues": [
+        {"l": "A", "text": "Loaves of bread used to feed the 5000", "n": 5},
+        {"l": "B", "text": "Fish used to feed the 5000", "n": 2},
+        {"l": "C", "text": "Baskets of leftovers collected", "n": 12},
+        {"l": "D", "text": "Stations of the Cross", "n": 14}
+      ],
+      "answer": 17, "op": "+", "correct": ["A", "C"]
+    },
+    {
+      "clues": [
+        {"l": "A", "text": "Men Gideon defeated the Midianites with", "n": 300},
+        {"l": "B", "text": "Pieces of silver Joseph was sold for", "n": 20},
+        {"l": "C", "text": "Hours in a day", "n": 24},
+        {"l": "D", "text": "Days of Noah's rain", "n": 40}
+      ],
+      "answer": 60, "op": "+", "correct": ["B", "D"]
+    },
+    {
+      "clues": [
+        {"l": "A", "text": "Elders around the throne in Revelation", "n": 24},
+        {"l": "B", "text": "Disciples of Jesus", "n": 12},
+        {"l": "C", "text": "Slices in a typical pizza", "n": 8},
+        {"l": "D", "text": "Books of Moses (the Pentateuch)", "n": 5}
+      ],
+      "answer": 12, "op": "−", "correct": ["A", "B"]
+    },
+    {
+      "clues": [
+        {"l": "A", "text": "Wings on a seraph (Isaiah 6)", "n": 6},
+        {"l": "B", "text": "Elders around the throne in Revelation", "n": 24},
+        {"l": "C", "text": "Years Solomon's temple took to build", "n": 7},
+        {"l": "D", "text": "Months in a year", "n": 12}
+      ],
+      "answer": 13, "op": "+", "correct": ["A", "C"]
+    },
+    {
+      "clues": [
+        {"l": "A", "text": "Books in the Bible total", "n": 66},
+        {"l": "B", "text": "Books in the New Testament", "n": 27},
+        {"l": "C", "text": "Wheels on a tricycle", "n": 3},
+        {"l": "D", "text": "Disciples of Jesus", "n": 12}
+      ],
+      "answer": 39, "op": "−", "correct": ["A", "B"]
+    },
+    {
+      "clues": [
+        {"l": "A", "text": "Fish in the miraculous catch (John 21)", "n": 153},
+        {"l": "B", "text": "Days of the week", "n": 7},
+        {"l": "C", "text": "Chapters in Psalms", "n": 150},
+        {"l": "D", "text": "Disciples of Jesus", "n": 12}
+      ],
+      "answer": 3, "op": "−", "correct": ["A", "C"]
+    }
+  ]
+}
