@@ -4,110 +4,110 @@
     {
       "clues": [
         {"l": "A", "text": "Wives Milton Hershey had", "n": 1},
-        {"l": "B", "text": "Years from cacao bean (picked) to chocolate bar", "n": 1},
-        {"l": "C", "text": "Coke Zeros Mr. Crory drank today", "n": 3},
+        {"l": "B", "text": "Coke Zeros Mr. Crory drank today", "n": 3},
+        {"l": "C", "text": "Years from cacao bean (picked) to chocolate bar", "n": 1},
         {"l": "D", "text": "Cows in the barn at the start of the people-mover chocolate tour", "n": 7}
       ],
-      "answer": 2, "op": "+", "correct": ["A", "B"]
+      "answer": 2, "op": "+", "correct": ["A", "C"]
     },
     {
       "clues": [
         {"l": "A", "text": "Cost (cents) of a Hershey Bar from 1900–1911", "n": 5},
-        {"l": "B", "text": "Complete cheesesteaks ordered at Stuff D's", "n": 6},
-        {"l": "C", "text": "Lights in Hershey's cut-glass torchiere", "n": 30},
-        {"l": "D", "text": "Deaths in the Pullman riots", "n": 12}
+        {"l": "B", "text": "Lights in Hershey's cut-glass torchiere", "n": 30},
+        {"l": "C", "text": "Deaths in the Pullman riots", "n": 12},
+        {"l": "D", "text": "Complete cheesesteaks ordered at Stuff D's", "n": 6}
       ],
-      "answer": 30, "op": "×", "correct": ["A", "B"]
+      "answer": 30, "op": "×", "correct": ["A", "D"]
     },
     {
       "clues": [
-        {"l": "A", "text": "Age difference (years) between Milton and Kitty", "n": 13},
-        {"l": "B", "text": "Age of the Buckley/Crory kid who added heat to their chocolate bar", "n": 17},
-        {"l": "C", "text": "Age Milton was when he opened his first shop", "n": 18},
+        {"l": "A", "text": "Age Milton was when he opened his first shop", "n": 18},
+        {"l": "B", "text": "Age difference (years) between Milton and Kitty", "n": 13},
+        {"l": "C", "text": "Age of the Buckley/Crory kid who added heat to their chocolate bar", "n": 17},
         {"l": "D", "text": "Letters in a single foil-wrapped candy with a plume", "n": 4}
       ],
-      "answer": 30, "op": "+", "correct": ["A", "B"]
+      "answer": 30, "op": "+", "correct": ["B", "C"]
     },
     {
       "clues": [
-        {"l": "A", "text": "Letters in the Buckley/Crory kid's name who posed with a chapstick cigarette", "n": 8},
-        {"l": "B", "text": "Birth month of the Buckley/Crory kid who dropped their token for supporting community", "n": 11},
-        {"l": "C", "text": "Milton Hershey died at this age", "n": 88},
-        {"l": "D", "text": "International Chocolate Day date in September", "n": 13}
+        {"l": "A", "text": "Milton Hershey died at this age", "n": 88},
+        {"l": "B", "text": "Letters in the Buckley/Crory kid's name who posed with a chapstick cigarette", "n": 8},
+        {"l": "C", "text": "International Chocolate Day date in September", "n": 13},
+        {"l": "D", "text": "Birth month of the Buckley/Crory kid who dropped their token for supporting community", "n": 11}
       ],
-      "answer": 88, "op": "×", "correct": ["A", "B"]
+      "answer": 88, "op": "×", "correct": ["B", "D"]
     },
     {
       "clues": [
         {"l": "A", "text": "Age Milton was apprenticed at the newspaper", "n": 14},
-        {"l": "B", "text": "Sale price (cents) of 1 lb of Hershey Kisses", "n": 29},
-        {"l": "C", "text": "Kitty Hershey died at this age", "n": 43},
+        {"l": "B", "text": "Kitty Hershey died at this age", "n": 43},
+        {"l": "C", "text": "Sale price (cents) of 1 lb of Hershey Kisses", "n": 29},
         {"l": "D", "text": "Age of the Buckley/Crory kid who wore red shoes to the museum", "n": 15}
       ],
-      "answer": 43, "op": "+", "correct": ["A", "B"]
+      "answer": 43, "op": "+", "correct": ["A", "C"]
     },
     {
       "clues": [
-        {"l": "A", "text": "Annual salary (dollars) of Ben Hogan as Hershey golf club pro", "n": 5000},
-        {"l": "B", "text": "Bassett hounds we met today", "n": 2},
-        {"l": "C", "text": "Limited-edition Hershey-inspired Dubai chocolate bars made", "n": 10000},
-        {"l": "D", "text": "Cost (dollars) of a worker's house in Hershey's town", "n": 2000}
+        {"l": "A", "text": "Limited-edition Hershey-inspired Dubai chocolate bars made", "n": 10000},
+        {"l": "B", "text": "Cost (dollars) of a worker's house in Hershey's town", "n": 2000},
+        {"l": "C", "text": "Annual salary (dollars) of Ben Hogan as Hershey golf club pro", "n": 5000},
+        {"l": "D", "text": "Bassett hounds we met today", "n": 2}
       ],
-      "answer": 10000, "op": "×", "correct": ["A", "B"]
+      "answer": 10000, "op": "×", "correct": ["C", "D"]
     },
     {
       "clues": [
-        {"l": "A", "text": "Grades Milton Hershey completed in school", "n": 4},
-        {"l": "B", "text": "Age of the Buckley/Crory kid who dropped their token for supporting culture", "n": 21},
-        {"l": "C", "text": "Letters in 'Hershey'", "n": 7},
+        {"l": "A", "text": "Letters in 'Hershey'", "n": 7},
+        {"l": "B", "text": "Grades Milton Hershey completed in school", "n": 4},
+        {"l": "C", "text": "Age of the Buckley/Crory kid who dropped their token for supporting culture", "n": 21},
         {"l": "D", "text": "Clearance height (feet) of the parking garage by Hershey Museum", "n": 7}
       ],
-      "answer": 84, "op": "×", "correct": ["A", "B"]
+      "answer": 84, "op": "×", "correct": ["B", "C"]
     },
     {
       "clues": [
-        {"l": "A", "text": "Year Shaq-a-licious XL gummies were introduced", "n": 2024},
-        {"l": "B", "text": "Year Hershey debuted a protein snack bar", "n": 2019},
+        {"l": "A", "text": "Workers at the Lancaster caramel factory", "n": 1300},
+        {"l": "B", "text": "Year Shaq-a-licious XL gummies were introduced", "n": 2024},
         {"l": "C", "text": "Golden Tickets in Charlie and the Chocolate Factory", "n": 5},
-        {"l": "D", "text": "Workers at the Lancaster caramel factory", "n": 1300}
+        {"l": "D", "text": "Year Hershey debuted a protein snack bar", "n": 2019}
       ],
-      "answer": 5, "op": "−", "correct": ["A", "B"]
+      "answer": 5, "op": "−", "correct": ["B", "D"]
     },
     {
       "clues": [
         {"l": "A", "text": "Original flavor count in classic Skittles", "n": 5},
-        {"l": "B", "text": "Millions of dollars Milton donated in trust to the school", "n": 60},
-        {"l": "C", "text": "Dollars in Milton's Titanic deposit check", "n": 300},
+        {"l": "B", "text": "Dollars in Milton's Titanic deposit check", "n": 300},
+        {"l": "C", "text": "Millions of dollars Milton donated in trust to the school", "n": 60},
         {"l": "D", "text": "Milton's age when his employees gifted him a custom ring", "n": 80}
       ],
-      "answer": 300, "op": "×", "correct": ["A", "B"]
+      "answer": 300, "op": "×", "correct": ["A", "C"]
     },
     {
       "clues": [
         {"l": "A", "text": "Maximum people allowed in a people-mover ride car", "n": 4},
-        {"l": "B", "text": "Chocolate bars the Buckley/Crory kids tasted with only nibs and cinnamon", "n": 4},
-        {"l": "C", "text": "Cops Mr. Crory interrogated about townships", "n": 1},
-        {"l": "D", "text": "Ration bars produced per day during WWII", "n": 100000}
+        {"l": "B", "text": "Cops Mr. Crory interrogated about townships", "n": 1},
+        {"l": "C", "text": "Ration bars produced per day during WWII", "n": 100000},
+        {"l": "D", "text": "Chocolate bars the Buckley/Crory kids tasted with only nibs and cinnamon", "n": 4}
       ],
-      "answer": 16, "op": "×", "correct": ["A", "B"]
+      "answer": 16, "op": "×", "correct": ["A", "D"]
     },
     {
       "clues": [
-        {"l": "A", "text": "Year Hershey's Kisses were introduced", "n": 1907},
-        {"l": "B", "text": "Letters in 'WONKA'", "n": 5},
-        {"l": "C", "text": "Year the Titanic sank", "n": 1912},
+        {"l": "A", "text": "Year the Titanic sank", "n": 1912},
+        {"l": "B", "text": "Year Hershey's Kisses were introduced", "n": 1907},
+        {"l": "C", "text": "Letters in 'WONKA'", "n": 5},
         {"l": "D", "text": "VRBO door code", "n": 6126}
       ],
-      "answer": 1912, "op": "+", "correct": ["A", "B"]
+      "answer": 1912, "op": "+", "correct": ["B", "C"]
     },
     {
       "clues": [
-        {"l": "A", "text": "Year Toblerone was introduced", "n": 1908},
-        {"l": "B", "text": "Year the Hershey Chocolate Company was founded", "n": 1894},
-        {"l": "C", "text": "Years between starting the caramel company and opening the chocolate shop", "n": 4},
-        {"l": "D", "text": "Street number of where we're staying", "n": 2829}
+        {"l": "A", "text": "Years between starting the caramel company and opening the chocolate shop", "n": 4},
+        {"l": "B", "text": "Street number of where we're staying", "n": 2829},
+        {"l": "C", "text": "Year Toblerone was introduced", "n": 1908},
+        {"l": "D", "text": "Year the Hershey Chocolate Company was founded", "n": 1894}
       ],
-      "answer": 14, "op": "−", "correct": ["A", "B"]
+      "answer": 14, "op": "−", "correct": ["C", "D"]
     }
   ]
 }
