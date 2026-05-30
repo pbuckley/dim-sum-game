@@ -23,6 +23,12 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #f5f4f0; c
 .first-team-btn { padding: 4px 12px; font-size: 12px; border-radius: 8px; border: 0.5px solid rgba(0,0,0,0.3); background: #fff; color: #1a1a18; cursor: pointer; font-family: inherit; }
 .first-team-btn:hover { background: #f5f4f0; }
 .first-team-btn.selected { background: #1D9E75; color: #fff; border-color: #1D9E75; }
+.mode-selector { display: flex; gap: 8px; align-items: center; justify-content: center; margin-bottom: 0.75rem; font-size: 12px; color: #5f5e5a; }
+.mode-btn { padding: 4px 10px; font-size: 12px; border-radius: 8px; border: 0.5px solid rgba(0,0,0,0.3); background: #fff; color: #1a1a18; cursor: pointer; font-family: inherit; }
+.mode-btn:hover { background: #f5f4f0; }
+.mode-btn.selected { background: #185FA5; color: #fff; border-color: #185FA5; }
+body.mode-solo .scoreboard { grid-template-columns: 1fr; max-width: 240px; margin-left: auto; margin-right: auto; }
+body.mode-solo #tc2, body.mode-solo .vs-badge, body.mode-solo #turn-ind, body.mode-solo .team-select-row { display: none; }
 .progress { display: flex; gap: 4px; justify-content: center; margin-bottom: 0.75rem; }
 .pdot { width: 12px; height: 12px; border-radius: 50%; background: #e8e7e0; border: 0.5px solid rgba(0,0,0,0.15); }
 .pdot.done { background: #1D9E75; border-color: #1D9E75; }
@@ -71,6 +77,11 @@ select { font-size: 13px; padding: 7px 10px; border-radius: 8px; border: 0.5px s
   </div>
 
   <div id="main-game">
+    <div id="mode-selector" class="mode-selector">
+      <span>Mode:</span>
+      <button class="mode-btn selected" data-mode="2" onclick="setMode(2)">Two teams</button>
+      <button class="mode-btn" data-mode="1" onclick="setMode(1)">Solo</button>
+    </div>
     <div class="scoreboard">
       <div class="team-card" id="tc1">
         <div class="team-name" id="tn1" title="Double-click to rename">Team 1</div>
@@ -127,6 +138,7 @@ select { font-size: 13px; padding: 7px 10px; border-radius: 8px; border: 0.5px s
 let ROUNDS=[];
 let round=0, scores=[0,0], teamNames=["Team 1","Team 2"], currentTeam=0;
 let picked=[], answered=false;
+let mode=2; // 2 = head-to-head, 1 = solo
 
 async function loadGameData(){
   try {
@@ -177,7 +189,8 @@ function renderRound(){
   picked=[]; answered=false;
   document.getElementById("round-info").textContent=`Round ${round+1} of ${ROUNDS.length}`;
   document.getElementById("feedback").className="feedback-bar";
-  document.getElementById("first-turn-setup").style.display=round===0?"flex":"none";
+  document.getElementById("mode-selector").style.display=round===0?"flex":"none";
+  document.getElementById("first-turn-setup").style.display=(round===0&&mode===2)?"flex":"none";
   document.getElementById("eq-display").textContent=`? ${r.op} ? = ${r.answer}`;
   const grid=document.getElementById("clues-grid");
   grid.innerHTML="";
@@ -211,7 +224,7 @@ function submitAnswer(){
   if(answered)return;
   if(picked.length!==2){alert("Pick exactly two clue letters!");return;}
   const r=ROUNDS[round];
-  const teamIdx=parseInt(document.getElementById("team-sel").value);
+  const teamIdx=mode===1?0:parseInt(document.getElementById("team-sel").value);
   answered=true;
   const sortedPicked=[...picked].sort().join(",");
   const sortedCorrect=[...r.correct].sort().join(",");
@@ -235,7 +248,22 @@ function submitAnswer(){
     fb.textContent=`✗ Wrong! The answer was ${r.correct.join(" and ")}. (${c1}=${n1}, ${c2}=${n2})`;
     fb.className="feedback-bar wrong";
   }
-  currentTeam=1-teamIdx;
+  if(mode===2){
+    currentTeam=1-teamIdx;
+    updateTurnIndicator();
+  }
+}
+
+function setMode(m){
+  if(round!==0||answered)return;
+  mode=m;
+  document.body.classList.toggle("mode-solo",m===1);
+  document.querySelectorAll(".mode-btn").forEach(b=>b.classList.toggle("selected",parseInt(b.dataset.mode)===m));
+  if(m===1){
+    currentTeam=0;
+    document.getElementById("team-sel").value="0";
+  }
+  document.getElementById("first-turn-setup").style.display=(round===0&&mode===2)?"flex":"none";
   updateTurnIndicator();
 }
 
@@ -276,9 +304,14 @@ function showGameOver(){
   document.getElementById("main-game").style.display="none";
   const go=document.getElementById("game-over");
   go.style.display="block";
-  document.getElementById("final-scores").textContent=`${teamNames[0]}: ${scores[0]} pts  ·  ${teamNames[1]}: ${scores[1]} pts`;
-  let w=scores[0]>scores[1]?`🏆 ${teamNames[0]} wins!`:scores[1]>scores[0]?`🏆 ${teamNames[1]} wins!`:"It's a tie!";
-  document.getElementById("winner-text").textContent=w;
+  if(mode===1){
+    document.getElementById("final-scores").textContent=`${teamNames[0]}: ${scores[0]} of ${ROUNDS.length} correct`;
+    document.getElementById("winner-text").textContent=scores[0]===ROUNDS.length?"🏆 Perfect score!":"Game complete!";
+  } else {
+    document.getElementById("final-scores").textContent=`${teamNames[0]}: ${scores[0]} pts  ·  ${teamNames[1]}: ${scores[1]} pts`;
+    let w=scores[0]>scores[1]?`🏆 ${teamNames[0]} wins!`:scores[1]>scores[0]?`🏆 ${teamNames[1]} wins!`:"It's a tie!";
+    document.getElementById("winner-text").textContent=w;
+  }
 }
 
 function resetGame(){

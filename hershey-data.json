@@ -4,11 +4,11 @@
     {
       "clues": [
         {"l": "A", "text": "Wives Milton Hershey had", "n": 1},
-        {"l": "B", "text": "Years from cacao bean (picked) to chocolate bar", "n": 2},
+        {"l": "B", "text": "Years from cacao bean (picked) to chocolate bar", "n": 1},
         {"l": "C", "text": "Coke Zeros Mr. Crory drank today", "n": 3},
         {"l": "D", "text": "Cows in the barn at the start of the people-mover chocolate tour", "n": 7}
       ],
-      "answer": 3, "op": "+", "correct": ["A", "B"]
+      "answer": 2, "op": "+", "correct": ["A", "B"]
     },
     {
       "clues": [
