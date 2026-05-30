@@ -3,138 +3,111 @@
   "rounds": [
     {
       "clues": [
-        {"l": "A", "text": "Days of Creation (before God rested)", "n": 6},
-        {"l": "B", "text": "Number of Commandments", "n": 10},
-        {"l": "C", "text": "Wheels on a tricycle", "n": 3},
-        {"l": "D", "text": "Books in the New Testament", "n": 27}
+        {"l": "A", "text": "Wives Milton Hershey had", "n": 1},
+        {"l": "B", "text": "Years from cacao bean (picked) to chocolate bar", "n": 2},
+        {"l": "C", "text": "Coke Zeros Mr. Crory drank today", "n": 3},
+        {"l": "D", "text": "Cows in the barn at the start of the people-mover chocolate tour", "n": 7}
       ],
-      "answer": 16, "op": "+", "correct": ["A", "B"]
+      "answer": 3, "op": "+", "correct": ["A", "B"]
     },
     {
       "clues": [
-        {"l": "A", "text": "Sons of Jacob (tribes of Israel)", "n": 12},
-        {"l": "B", "text": "Days Jesus was in the tomb", "n": 3},
-        {"l": "C", "text": "Books of Moses (the Pentateuch)", "n": 5},
-        {"l": "D", "text": "Books in The Chronicles of Narnia", "n": 7}
+        {"l": "A", "text": "Cost (cents) of a Hershey Bar from 1900–1911", "n": 5},
+        {"l": "B", "text": "Complete cheesesteaks ordered at Stuff D's", "n": 6},
+        {"l": "C", "text": "Lights in Hershey's cut-glass torchiere", "n": 30},
+        {"l": "D", "text": "Deaths in the Pullman riots", "n": 12}
       ],
-      "answer": 60, "op": "×", "correct": ["A", "C"]
+      "answer": 30, "op": "×", "correct": ["A", "B"]
     },
     {
       "clues": [
-        {"l": "A", "text": "Sides on a stop sign", "n": 8},
-        {"l": "B", "text": "Books of Moses (the Pentateuch)", "n": 5},
-        {"l": "C", "text": "Persons in the Trinity", "n": 3},
-        {"l": "D", "text": "Days of Noah's rain", "n": 40}
+        {"l": "A", "text": "Age difference (years) between Milton and Kitty", "n": 13},
+        {"l": "B", "text": "Age of the Buckley/Crory kid who added heat to their chocolate bar", "n": 17},
+        {"l": "C", "text": "Age Milton was when he opened his first shop", "n": 18},
+        {"l": "D", "text": "Letters in a single foil-wrapped candy with a plume", "n": 4}
       ],
-      "answer": 40, "op": "×", "correct": ["A", "B"]
+      "answer": 30, "op": "+", "correct": ["A", "B"]
     },
     {
       "clues": [
-        {"l": "A", "text": "Silver pieces Judas received", "n": 30},
-        {"l": "B", "text": "Days in Lent", "n": 40},
-        {"l": "C", "text": "Books in the Old Testament", "n": 39},
-        {"l": "D", "text": "Age Jesus began his public ministry", "n": 30}
+        {"l": "A", "text": "Letters in the Buckley/Crory kid's name who posed with a chapstick cigarette", "n": 8},
+        {"l": "B", "text": "Birth month of the Buckley/Crory kid who dropped their token for supporting community", "n": 11},
+        {"l": "C", "text": "Milton Hershey died at this age", "n": 88},
+        {"l": "D", "text": "International Chocolate Day date in September", "n": 13}
       ],
-      "answer": 60, "op": "+", "correct": ["A", "D"]
+      "answer": 88, "op": "×", "correct": ["A", "B"]
     },
     {
       "clues": [
-        {"l": "A", "text": "Loaves of bread used to feed the 5000", "n": 5},
-        {"l": "B", "text": "Letters Paul wrote (epistles)", "n": 13},
-        {"l": "C", "text": "Wheels on a car", "n": 4},
-        {"l": "D", "text": "Persons in the Trinity", "n": 3}
+        {"l": "A", "text": "Age Milton was apprenticed at the newspaper", "n": 14},
+        {"l": "B", "text": "Sale price (cents) of 1 lb of Hershey Kisses", "n": 29},
+        {"l": "C", "text": "Kitty Hershey died at this age", "n": 43},
+        {"l": "D", "text": "Age of the Buckley/Crory kid who wore red shoes to the museum", "n": 15}
       ],
-      "answer": 18, "op": "+", "correct": ["A", "B"]
+      "answer": 43, "op": "+", "correct": ["A", "B"]
     },
     {
       "clues": [
-        {"l": "A", "text": "Men in the fiery furnace (+ the mystery figure)", "n": 4},
-        {"l": "B", "text": "Plagues of Egypt", "n": 10},
-        {"l": "C", "text": "Days of Christmas (the song)", "n": 12},
-        {"l": "D", "text": "Letters Paul wrote (epistles)", "n": 13}
+        {"l": "A", "text": "Annual salary (dollars) of Ben Hogan as Hershey golf club pro", "n": 5000},
+        {"l": "B", "text": "Bassett hounds we met today", "n": 2},
+        {"l": "C", "text": "Limited-edition Hershey-inspired Dubai chocolate bars made", "n": 10000},
+        {"l": "D", "text": "Cost (dollars) of a worker's house in Hershey's town", "n": 2000}
       ],
-      "answer": 23, "op": "+", "correct": ["B", "D"]
+      "answer": 10000, "op": "×", "correct": ["A", "B"]
     },
     {
       "clues": [
-        {"l": "A", "text": "Days Moses was on Mount Sinai", "n": 40},
-        {"l": "B", "text": "Slices in a typical pizza", "n": 8},
-        {"l": "C", "text": "Plagues of Egypt", "n": 10},
-        {"l": "D", "text": "Wings on a seraph (Isaiah 6)", "n": 6}
+        {"l": "A", "text": "Grades Milton Hershey completed in school", "n": 4},
+        {"l": "B", "text": "Age of the Buckley/Crory kid who dropped their token for supporting culture", "n": 21},
+        {"l": "C", "text": "Letters in 'Hershey'", "n": 7},
+        {"l": "D", "text": "Clearance height (feet) of the parking garage by Hershey Museum", "n": 7}
       ],
-      "answer": 30, "op": "−", "correct": ["A", "C"]
+      "answer": 84, "op": "×", "correct": ["A", "B"]
     },
     {
       "clues": [
-        {"l": "A", "text": "Beatitudes in the Sermon on the Mount", "n": 8},
-        {"l": "B", "text": "Days Jesus was in the tomb", "n": 3},
-        {"l": "C", "text": "VeggieTales main characters (Bob and Larry)", "n": 2},
-        {"l": "D", "text": "Books of John in the New Testament", "n": 4}
+        {"l": "A", "text": "Year Shaq-a-licious XL gummies were introduced", "n": 2024},
+        {"l": "B", "text": "Year Hershey debuted a protein snack bar", "n": 2019},
+        {"l": "C", "text": "Golden Tickets in Charlie and the Chocolate Factory", "n": 5},
+        {"l": "D", "text": "Workers at the Lancaster caramel factory", "n": 1300}
       ],
       "answer": 5, "op": "−", "correct": ["A", "B"]
     },
     {
       "clues": [
-        {"l": "A", "text": "Beatitudes in the Sermon on the Mount", "n": 8},
-        {"l": "B", "text": "Fruits of the Spirit (Galatians 5)", "n": 9},
-        {"l": "C", "text": "Continents on Earth", "n": 7},
-        {"l": "D", "text": "Days of Creation (before God rested)", "n": 6}
+        {"l": "A", "text": "Original flavor count in classic Skittles", "n": 5},
+        {"l": "B", "text": "Millions of dollars Milton donated in trust to the school", "n": 60},
+        {"l": "C", "text": "Dollars in Milton's Titanic deposit check", "n": 300},
+        {"l": "D", "text": "Milton's age when his employees gifted him a custom ring", "n": 80}
       ],
-      "answer": 17, "op": "+", "correct": ["A", "B"]
+      "answer": 300, "op": "×", "correct": ["A", "B"]
     },
     {
       "clues": [
-        {"l": "A", "text": "Loaves of bread used to feed the 5000", "n": 5},
-        {"l": "B", "text": "Fish used to feed the 5000", "n": 2},
-        {"l": "C", "text": "Baskets of leftovers collected", "n": 12},
-        {"l": "D", "text": "Stations of the Cross", "n": 14}
+        {"l": "A", "text": "Maximum people allowed in a people-mover ride car", "n": 4},
+        {"l": "B", "text": "Chocolate bars the Buckley/Crory kids tasted with only nibs and cinnamon", "n": 4},
+        {"l": "C", "text": "Cops Mr. Crory interrogated about townships", "n": 1},
+        {"l": "D", "text": "Ration bars produced per day during WWII", "n": 100000}
       ],
-      "answer": 17, "op": "+", "correct": ["A", "C"]
+      "answer": 16, "op": "×", "correct": ["A", "B"]
     },
     {
       "clues": [
-        {"l": "A", "text": "Men Gideon defeated the Midianites with", "n": 300},
-        {"l": "B", "text": "Pieces of silver Joseph was sold for", "n": 20},
-        {"l": "C", "text": "Hours in a day", "n": 24},
-        {"l": "D", "text": "Days of Noah's rain", "n": 40}
+        {"l": "A", "text": "Year Hershey's Kisses were introduced", "n": 1907},
+        {"l": "B", "text": "Letters in 'WONKA'", "n": 5},
+        {"l": "C", "text": "Year the Titanic sank", "n": 1912},
+        {"l": "D", "text": "VRBO door code", "n": 6126}
       ],
-      "answer": 60, "op": "+", "correct": ["B", "D"]
+      "answer": 1912, "op": "+", "correct": ["A", "B"]
     },
     {
       "clues": [
-        {"l": "A", "text": "Elders around the throne in Revelation", "n": 24},
-        {"l": "B", "text": "Disciples of Jesus", "n": 12},
-        {"l": "C", "text": "Slices in a typical pizza", "n": 8},
-        {"l": "D", "text": "Books of Moses (the Pentateuch)", "n": 5}
+        {"l": "A", "text": "Year Toblerone was introduced", "n": 1908},
+        {"l": "B", "text": "Year the Hershey Chocolate Company was founded", "n": 1894},
+        {"l": "C", "text": "Years between starting the caramel company and opening the chocolate shop", "n": 4},
+        {"l": "D", "text": "Street number of where we're staying", "n": 2829}
       ],
-      "answer": 12, "op": "−", "correct": ["A", "B"]
-    },
-    {
-      "clues": [
-        {"l": "A", "text": "Wings on a seraph (Isaiah 6)", "n": 6},
-        {"l": "B", "text": "Elders around the throne in Revelation", "n": 24},
-        {"l": "C", "text": "Years Solomon's temple took to build", "n": 7},
-        {"l": "D", "text": "Months in a year", "n": 12}
-      ],
-      "answer": 13, "op": "+", "correct": ["A", "C"]
-    },
-    {
-      "clues": [
-        {"l": "A", "text": "Books in the Bible total", "n": 66},
-        {"l": "B", "text": "Books in the New Testament", "n": 27},
-        {"l": "C", "text": "Wheels on a tricycle", "n": 3},
-        {"l": "D", "text": "Disciples of Jesus", "n": 12}
-      ],
-      "answer": 39, "op": "−", "correct": ["A", "B"]
-    },
-    {
-      "clues": [
-        {"l": "A", "text": "Fish in the miraculous catch (John 21)", "n": 153},
-        {"l": "B", "text": "Days of the week", "n": 7},
-        {"l": "C", "text": "Chapters in Psalms", "n": 150},
-        {"l": "D", "text": "Disciples of Jesus", "n": 12}
-      ],
-      "answer": 3, "op": "−", "correct": ["A", "C"]
+      "answer": 14, "op": "−", "correct": ["A", "B"]
     }
   ]
 }
