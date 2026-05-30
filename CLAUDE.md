@@ -12,6 +12,7 @@ index.html         carousel game selector (left/right cycles games, Enter plays)
 <game>-data.json   matching data file (e.g., dimsum-data.json, hershey-data.json)
 validate.js        data validator — runs in browser on load AND from CLI
 scaling.js         viewport scaling for big-screen play (TV/projector)
+keynav.js          keyboard shortcuts for in-game play (A/B/C/D, Enter, ←/→, R)
 seed-<game>.md     optional: raw clue seeds before they're shaped into rounds
 ```
 
@@ -29,8 +30,11 @@ its own data file by name.
 3. Add an entry to `index.html`'s `GAMES` array: `{ emoji, name, tagline, href }`.
 4. Run `node validate.js` and load the game in a browser before declaring done.
 
-Do NOT remove `<script src="validate.js"></script>` or `<script src="scaling.js"></script>`
-from any game — both are required infrastructure.
+Do NOT remove `<script src="validate.js"></script>`, `<script src="scaling.js"></script>`,
+or `<script src="keynav.js" defer></script>` from any game — all three are required
+infrastructure. `keynav.js` needs `defer` so it runs after the inline script
+defines the per-game globals (`togglePick`, `submitAnswer`, `revealAll`,
+`nextRound`, `prevRound`).
 
 ## Data file schema
 
@@ -166,8 +170,15 @@ preserve it. Don't invent new layouts unless the user asks. Particularly:
 - **Serve over HTTP, not `file://`.** `fetch()` for the JSON file blocks on
   `file://`. Each game's error panel already tells the user this. Don't
   switch to inlined data — it defeats the point of editable JSON.
-- **Keyboard-friendly.** Existing shortcuts: `+/-/0` for size (scaling.js),
-  `←/→` and Enter on the carousel. Don't add new shortcuts that conflict.
+- **Keyboard-friendly.** Existing shortcuts: `+/-/0` for size (scaling.js);
+  `A/B/C/D` to pick a clue, Enter to submit, `←/→` to navigate rounds, `R` to
+  reveal all (keynav.js); `←/→` and Enter on the carousel. Don't add new
+  shortcuts that conflict. Every game must define `prevRound()` so the `←`
+  shortcut works — see existing games for the one-liner.
+- **Re-answering protection.** Each game tracks `answeredRounds` as a `Set`
+  and refuses to re-score if the player navigates back to an answered round.
+  Preserve this pattern when cloning — don't let `prevRound` allow score
+  inflation.
 - **Big-screen play matters.** Use the size toggle (top-right corner) to
   preview at 2×/3× before declaring a layout finished. Things that look fine
   at 1× sometimes wrap awkwardly at 3×.

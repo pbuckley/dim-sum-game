@@ -73,7 +73,7 @@ select { font-size: 13px; padding: 7px 10px; border-radius: 8px; border: 0.5px s
 <div id="app">
   <div class="header">
     <div class="title">🥟 🍫 🎩 Hershey</div>
-    <div class="subtitle">The equation answer is shown — click the two clues that satisfy it</div>
+    <div class="subtitle">The equation answer is shown — click the two clues that satisfy it &middot; keys: A/B/C/D pick, Enter submit, ←/→ rounds, R reveal</div>
   </div>
 
   <div id="main-game">
@@ -135,10 +135,12 @@ select { font-size: 13px; padding: 7px 10px; border-radius: 8px; border: 0.5px s
 
 <script src="validate.js"></script>
 <script src="scaling.js"></script>
+<script src="keynav.js" defer></script>
 <script>
 let ROUNDS=[];
 let round=0, scores=[0,0], teamNames=["Team 1","Team 2"], currentTeam=0;
 let picked=[], answered=false;
+let answeredRounds=new Set();
 let mode=2; // 2 = head-to-head, 1 = solo
 
 async function loadGameData(){
@@ -206,6 +208,10 @@ function renderRound(){
   document.getElementById("team-sel").value=String(currentTeam);
   updateTurnIndicator();
   buildProgress();
+  if(answeredRounds.has(round)){
+    answered=true;
+    revealAll();
+  }
 }
 
 function togglePick(l){
@@ -222,11 +228,12 @@ function togglePick(l){
 }
 
 function submitAnswer(){
-  if(answered)return;
+  if(answered||answeredRounds.has(round))return;
   if(picked.length!==2){alert("Pick exactly two clue letters!");return;}
   const r=ROUNDS[round];
   const teamIdx=mode===1?0:parseInt(document.getElementById("team-sel").value);
   answered=true;
+  answeredRounds.add(round);
   const sortedPicked=[...picked].sort().join(",");
   const sortedCorrect=[...r.correct].sort().join(",");
   const isCorrect=sortedPicked===sortedCorrect;
@@ -295,6 +302,12 @@ function nextRound(){
   else renderRound();
 }
 
+function prevRound(){
+  if(round<=0)return;
+  round--;
+  renderRound();
+}
+
 function updateTurnIndicator(){
   document.getElementById("turn-ind").textContent=`${teamNames[currentTeam]}'s turn to answer`;
   document.getElementById("tc1").className="team-card"+(currentTeam===0?" active":"");
@@ -317,6 +330,7 @@ function showGameOver(){
 
 function resetGame(){
   round=0; scores=[0,0]; currentTeam=0;
+  answeredRounds=new Set();
   document.getElementById("s1").textContent=0;
   document.getElementById("s2").textContent=0;
   document.getElementById("main-game").style.display="block";
