@@ -142,6 +142,10 @@ preserve it. Don't invent new layouts unless the user asks. Particularly:
 - Coin-flip "who goes first?" selector appears above the turn indicator in
   Two-team mode only, hides after round 1.
 - Body class `mode-solo` collapses the second team's UI.
+- Every game has a `.back-link` anchor to `index.html` fixed in the top-left
+  corner (and the size toggle from scaling.js fixed in the top-right). Both
+  use `position: fixed` with `z-index: 1000` so they stay accessible during
+  play and on the game-over screen. Preserve when cloning.
 
 ## Trivia design — general principles
 
