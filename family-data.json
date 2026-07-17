@@ -24,7 +24,7 @@
         {"l": "A", "text": "Wheels on the longboard Matt crashed", "n": 4},
         {"l": "B", "text": "Letters in the city where Kate and Erik got engaged", "n": 9},
         {"l": "C", "text": "Number of Kasitz grandkids", "n": 24},
-        {"l": "D", "text": "Letters in 'Craig'", "n": 5}
+        {"l": "D", "text": "Letters in what Nana thought PopPop's first name was", "n": 5}
       ],
       "answer": 9, "op": "+", "correct": ["A", "D"]
     },
@@ -40,7 +40,7 @@
     {
       "clues": [
         {"l": "A", "text": "Letters in the first NH town Nana and PopPop had an apartment", "n": 6},
-        {"l": "B", "text": "Number of Buckley dogs (Peter and Katie)", "n": 3},
+        {"l": "B", "text": "Number of Buckley dogs (Pete and Katie)", "n": 3},
         {"l": "C", "text": "Letters in the town where Pete and Jess got engaged", "n": 5},
         {"l": "D", "text": "Swings that can hang up in Nana's basement", "n": 3}
       ],
@@ -48,9 +48,9 @@
     },
     {
       "clues": [
-        {"l": "A", "text": "Letters in Erik's college", "n": 3},
+        {"l": "A", "text": "Letters in name of Erik's college", "n": 24},
         {"l": "B", "text": "Little River Road house number", "n": 38},
-        {"l": "C", "text": "Hamsters Pete blames Melinda for", "n": 1},
+        {"l": "C", "text": "Dead hamsters Pete blames Melinda for", "n": 1},
         {"l": "D", "text": "Disney cruises we've been on together", "n": 2}
       ],
       "answer": 3, "op": "+", "correct": ["C", "D"]
@@ -78,7 +78,7 @@
         {"l": "A", "text": "Family trips to Hawaii together", "n": 1},
         {"l": "B", "text": "Hummingbird Lane house number", "n": 18},
         {"l": "C", "text": "Years PopPop was at MSA", "n": 38},
-        {"l": "D", "text": "Number of snakes", "n": 2}
+        {"l": "D", "text": "Number of snakes Pete had", "n": 2}
       ],
       "answer": 2, "op": "×", "correct": ["A", "D"]
     },
@@ -87,14 +87,14 @@
         {"l": "A", "text": "Bison Bluff house number", "n": 3003},
         {"l": "B", "text": "Dogs PopPop took to Europe", "n": 1},
         {"l": "C", "text": "Collective years of marriage (all of us combined)", "n": 100},
-        {"l": "D", "text": "Gerald Buckley's birth year", "n": 1916}
+        {"l": "D", "text": "Gerald Buckley's (grandpop not uncle) birth year", "n": 1916}
       ],
       "answer": 100, "op": "×", "correct": ["B", "C"]
     },
     {
       "clues": [
         {"l": "A", "text": "Van seats Spot destroyed", "n": 1},
-        {"l": "B", "text": "Year the Buckleys got married", "n": 2001},
+        {"l": "B", "text": "Year the Buckleys (Pete and Jess) got married", "n": 2001},
         {"l": "C", "text": "Ruth Pocius's birth year", "n": 1928},
         {"l": "D", "text": "Kate Mignault's birth year", "n": 1981}
       ],
