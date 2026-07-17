@@ -1,0 +1,59 @@
+{
+  "teams": ["Team 1", "Team 2"],
+  "rounds": [
+    {
+      "clues": [
+        {"l": "A", "text": "Wheels on a family minivan", "n": 4},
+        {"l": "B", "text": "Parents in a nuclear family", "n": 2},
+        {"l": "C", "text": "Members in the Simpsons' immediate family", "n": 5},
+        {"l": "D", "text": "Sides on a standard die", "n": 6}
+      ],
+      "answer": 6, "op": "+", "correct": ["A", "B"]
+    },
+    {
+      "clues": [
+        {"l": "A", "text": "Days in a week", "n": 7},
+        {"l": "B", "text": "Days in February (non-leap year)", "n": 28},
+        {"l": "C", "text": "Grandparents each person has (biologically)", "n": 4},
+        {"l": "D", "text": "Rooms in a typical suburban house", "n": 8}
+      ],
+      "answer": 28, "op": "×", "correct": ["A", "C"]
+    },
+    {
+      "clues": [
+        {"l": "A", "text": "Months in a year", "n": 12},
+        {"l": "B", "text": "Wheels on a bike", "n": 2},
+        {"l": "C", "text": "Great-grandparents each person has (biologically)", "n": 8},
+        {"l": "D", "text": "Fingers on one hand", "n": 5}
+      ],
+      "answer": 7, "op": "−", "correct": ["A", "D"]
+    },
+    {
+      "clues": [
+        {"l": "A", "text": "Sides on a hexagon", "n": 6},
+        {"l": "B", "text": "Wheels on a tricycle", "n": 3},
+        {"l": "C", "text": "Sides on a square", "n": 4},
+        {"l": "D", "text": "Original US colonies", "n": 13}
+      ],
+      "answer": 7, "op": "+", "correct": ["B", "C"]
+    },
+    {
+      "clues": [
+        {"l": "A", "text": "Squares on a Rubik's cube face", "n": 9},
+        {"l": "B", "text": "Legs on an insect", "n": 6},
+        {"l": "C", "text": "Days in most months", "n": 30},
+        {"l": "D", "text": "Toes on one foot", "n": 5}
+      ],
+      "answer": 30, "op": "×", "correct": ["B", "D"]
+    },
+    {
+      "clues": [
+        {"l": "A", "text": "Cousins in a very large family reunion", "n": 20},
+        {"l": "B", "text": "Number of triplets in a set", "n": 3},
+        {"l": "C", "text": "Minutes in a quarter hour", "n": 15},
+        {"l": "D", "text": "Basketball starters on one team", "n": 5}
+      ],
+      "answer": 20, "op": "+", "correct": ["C", "D"]
+    }
+  ]
+}
