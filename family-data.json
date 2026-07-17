@@ -3,57 +3,120 @@
   "rounds": [
     {
       "clues": [
-        {"l": "A", "text": "Wheels on a family minivan", "n": 4},
-        {"l": "B", "text": "Parents in a nuclear family", "n": 2},
-        {"l": "C", "text": "Members in the Simpsons' immediate family", "n": 5},
-        {"l": "D", "text": "Sides on a standard die", "n": 6}
+        {"l": "A", "text": "Ice cream cones Grandpop had", "n": 3},
+        {"l": "B", "text": "Number of Baca kids", "n": 4},
+        {"l": "C", "text": "Number of Kasitz kids", "n": 7},
+        {"l": "D", "text": "Slices in a Papa Gino's pizza", "n": 8}
       ],
-      "answer": 6, "op": "+", "correct": ["A", "B"]
+      "answer": 7, "op": "+", "correct": ["A", "B"]
     },
     {
       "clues": [
-        {"l": "A", "text": "Days in a week", "n": 7},
-        {"l": "B", "text": "Days in February (non-leap year)", "n": 28},
-        {"l": "C", "text": "Grandparents each person has (biologically)", "n": 4},
-        {"l": "D", "text": "Rooms in a typical suburban house", "n": 8}
+        {"l": "A", "text": "Number of Dunn kids", "n": 5},
+        {"l": "B", "text": "Letters in the town Kate and Erik lived in when they got married", "n": 8},
+        {"l": "C", "text": "Number of Dunn grandkids", "n": 3},
+        {"l": "D", "text": "Number of Subarus Nana has owned", "n": 6}
       ],
-      "answer": 28, "op": "×", "correct": ["A", "C"]
+      "answer": 8, "op": "+", "correct": ["A", "C"]
     },
     {
       "clues": [
-        {"l": "A", "text": "Months in a year", "n": 12},
-        {"l": "B", "text": "Wheels on a bike", "n": 2},
-        {"l": "C", "text": "Great-grandparents each person has (biologically)", "n": 8},
-        {"l": "D", "text": "Fingers on one hand", "n": 5}
+        {"l": "A", "text": "Wheels on the longboard Matt crashed", "n": 4},
+        {"l": "B", "text": "Letters in the city where Kate and Erik got engaged", "n": 9},
+        {"l": "C", "text": "Number of Kasitz grandkids", "n": 24},
+        {"l": "D", "text": "Letters in 'Craig'", "n": 5}
       ],
-      "answer": 7, "op": "−", "correct": ["A", "D"]
+      "answer": 9, "op": "+", "correct": ["A", "D"]
     },
     {
       "clues": [
-        {"l": "A", "text": "Sides on a hexagon", "n": 6},
-        {"l": "B", "text": "Wheels on a tricycle", "n": 3},
-        {"l": "C", "text": "Sides on a square", "n": 4},
-        {"l": "D", "text": "Original US colonies", "n": 13}
+        {"l": "A", "text": "Tires in the Buckley–Mignault cousin bicycle gang", "n": 10},
+        {"l": "B", "text": "Letters in the only naughty thing Shaeffer chewed", "n": 4},
+        {"l": "C", "text": "Letters in the name of the dog PopPop took to Europe", "n": 6},
+        {"l": "D", "text": "Cousins who can't buy a drink at a US bar", "n": 3}
       ],
-      "answer": 7, "op": "+", "correct": ["B", "C"]
+      "answer": 10, "op": "+", "correct": ["B", "C"]
     },
     {
       "clues": [
-        {"l": "A", "text": "Squares on a Rubik's cube face", "n": 9},
-        {"l": "B", "text": "Legs on an insect", "n": 6},
-        {"l": "C", "text": "Days in most months", "n": 30},
-        {"l": "D", "text": "Toes on one foot", "n": 5}
+        {"l": "A", "text": "Letters in the first NH town Nana and PopPop had an apartment", "n": 6},
+        {"l": "B", "text": "Number of Buckley dogs (Peter and Katie)", "n": 3},
+        {"l": "C", "text": "Letters in the town where Pete and Jess got engaged", "n": 5},
+        {"l": "D", "text": "Swings that can hang up in Nana's basement", "n": 3}
       ],
-      "answer": 30, "op": "×", "correct": ["B", "D"]
+      "answer": 6, "op": "+", "correct": ["B", "D"]
     },
     {
       "clues": [
-        {"l": "A", "text": "Cousins in a very large family reunion", "n": 20},
-        {"l": "B", "text": "Number of triplets in a set", "n": 3},
-        {"l": "C", "text": "Minutes in a quarter hour", "n": 15},
-        {"l": "D", "text": "Basketball starters on one team", "n": 5}
+        {"l": "A", "text": "Letters in Erik's college", "n": 3},
+        {"l": "B", "text": "Little River Road house number", "n": 38},
+        {"l": "C", "text": "Hamsters Pete blames Melinda for", "n": 1},
+        {"l": "D", "text": "Disney cruises we've been on together", "n": 2}
       ],
-      "answer": 20, "op": "+", "correct": ["C", "D"]
+      "answer": 3, "op": "+", "correct": ["C", "D"]
+    },
+    {
+      "clues": [
+        {"l": "A", "text": "Drew Road house number", "n": 15},
+        {"l": "B", "text": "Anniversary Nana and PopPop renewed their vows", "n": 37},
+        {"l": "C", "text": "Danforth Court house number", "n": 52},
+        {"l": "D", "text": "Chatham Circle house number", "n": 16}
+      ],
+      "answer": 52, "op": "+", "correct": ["A", "B"]
+    },
+    {
+      "clues": [
+        {"l": "A", "text": "Jess Buckley's birth year", "n": 1979},
+        {"l": "B", "text": "Year Nana and PopPop got married", "n": 1975},
+        {"l": "C", "text": "Pete Buckley's birth year", "n": 1978},
+        {"l": "D", "text": "Gremlins Nana has owned", "n": 1}
+      ],
+      "answer": 1, "op": "−", "correct": ["A", "C"]
+    },
+    {
+      "clues": [
+        {"l": "A", "text": "Family trips to Hawaii together", "n": 1},
+        {"l": "B", "text": "Hummingbird Lane house number", "n": 18},
+        {"l": "C", "text": "Years PopPop was at MSA", "n": 38},
+        {"l": "D", "text": "Number of snakes", "n": 2}
+      ],
+      "answer": 2, "op": "×", "correct": ["A", "D"]
+    },
+    {
+      "clues": [
+        {"l": "A", "text": "Bison Bluff house number", "n": 3003},
+        {"l": "B", "text": "Dogs PopPop took to Europe", "n": 1},
+        {"l": "C", "text": "Collective years of marriage (all of us combined)", "n": 100},
+        {"l": "D", "text": "Gerald Buckley's birth year", "n": 1916}
+      ],
+      "answer": 100, "op": "×", "correct": ["B", "C"]
+    },
+    {
+      "clues": [
+        {"l": "A", "text": "Van seats Spot destroyed", "n": 1},
+        {"l": "B", "text": "Year the Buckleys got married", "n": 2001},
+        {"l": "C", "text": "Ruth Pocius's birth year", "n": 1928},
+        {"l": "D", "text": "Kate Mignault's birth year", "n": 1981}
+      ],
+      "answer": 20, "op": "−", "correct": ["B", "D"]
+    },
+    {
+      "clues": [
+        {"l": "A", "text": "Marian Buckley's birth year", "n": 1921},
+        {"l": "B", "text": "Greenwood Meadow Trail house number", "n": 18507},
+        {"l": "C", "text": "Year the Mignaults got married", "n": 2001},
+        {"l": "D", "text": "Year the war ended", "n": 1945}
+      ],
+      "answer": 56, "op": "−", "correct": ["C", "D"]
+    },
+    {
+      "clues": [
+        {"l": "A", "text": "Pete Talacki's birth year", "n": 1925},
+        {"l": "B", "text": "Erik Mignault's birth year", "n": 1981},
+        {"l": "C", "text": "Year the aunts and uncles got married", "n": 2001},
+        {"l": "D", "text": "Year the Talackis got married", "n": 1949}
+      ],
+      "answer": 52, "op": "−", "correct": ["C", "D"]
     }
   ]
 }
